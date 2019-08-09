@@ -1,0 +1,52 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "5f99cb28bf05bddd7fc142b865a9dfe2",
+    "packages": [
+        {
+            "name": "yedpay/php-library",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.yedpay.com/Backend/yedpay-api-client-php.git",
+                "reference": "a720eb44538358d36a00ca028fa516a292a6064f"
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "doctrine/instantiator": "~1.0.1",
+                "phpdocumentor/reflection-docblock": "3.2.2",
+                "phpunit/phpunit": "4.8.36"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yedpay\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "yedpay",
+                    "email": "info@gcash.co"
+                }
+            ],
+            "description": "Agnostic Library to use the Yedpay API for Precretae transactions",
+            "time": "2019-08-08T11:29:24+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

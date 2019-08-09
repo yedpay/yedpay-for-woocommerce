@@ -1,8 +1,8 @@
 <?php
 
 /*
-  Plugin Name: Yedpay
-  Description: Extends WooCommerce to Process Yedpay Payments.
+  Plugin Name: Yedpay for WooCommerce
+  Description: Extends WooCommerce to Process Payments with Yedpay.
   Version: 1.0.0
   Plugin URI: https://wordpress.org/plugins/yedpay/
   Author: Yedpay
@@ -25,9 +25,9 @@ function yedpay_uninstall()
     delete_option('woocommerce_yedpay_settings');
 }
 
-add_action('plugins_loaded', 'woocommerce_tech_yedpay_init', 0);
+add_action('plugins_loaded', 'woocommerce_yedpay_init', 0);
 
-function woocommerce_tech_yedpay_init()
+function woocommerce_yedpay_init()
 {
     if (!class_exists('WC_Payment_Gateway')) {
         return;
@@ -41,11 +41,11 @@ function woocommerce_tech_yedpay_init()
     /**
      * Add this Gateway to WooCommerce
      */
-    function woocommerce_add_tech_yedpay_gateway($methods)
+    function woocommerce_add_yedpay_gateway($methods)
     {
         $methods[] = 'WoocommerceYedpay';
         return $methods;
     }
 
-    add_filter('woocommerce_payment_gateways', 'woocommerce_add_tech_yedpay_gateway');
+    add_filter('woocommerce_payment_gateways', 'woocommerce_add_yedpay_gateway');
 }

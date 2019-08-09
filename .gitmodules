@@ -1,3 +1,0 @@
-[submodule "includes/yedpay-api-client-php"]
-	path = includes/yedpay-api-client-php
-	url = git@git.yedpay.com:Backend/yedpay-api-client-php.git
