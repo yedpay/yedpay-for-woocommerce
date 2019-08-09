@@ -1,5 +1,5 @@
 === Plugin Name ===
-Yedpay
+Yedpay for WooCommerce
 Contributors: Yedpay
 Donate link: 
 Tags: woocommerce Alipay, payment gateway, woocommerce, woocommerce payment gateway
