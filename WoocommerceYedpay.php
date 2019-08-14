@@ -102,33 +102,33 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 'title' => __('Gateway', 'yedpay_woocommerce'),
                 'type' => 'select',
                 'options' => [
-                    '0' => 'All',
-                    '4_2' => 'Alipay Online Only',
-                    '8_2' => 'WeChat Pay Online Only',
+                    '0' => __('All', 'yedpay_woocommerce'),
+                    '4_2' => __('Alipay Online Only', 'yedpay_woocommerce'),
+                    '8_2' => __('WeChat Pay Online Only', 'yedpay_woocommerce'),
                 ],
-                'description' => 'Support Gateways'
+                'description' => __('Support Gateways', 'yedpay_woocommerce')
             ],
             'yedpay_gateway_wallet' => [
                 'title' => __('Gateway Wallet', 'yedpay_woocommerce'),
                 'type' => 'select',
                 'options' => [
-                    '0' => 'All',
-                    'HK' => 'Hong Kong Wallet',
-                    'CN' => 'China Wallet',
+                    '0' => __('All', 'yedpay_woocommerce'),
+                    'HK' => __('Hong Kong Wallet', 'yedpay_woocommerce'),
+                    'CN' => __('China Wallet', 'yedpay_woocommerce'),
                 ],
-                'description' => 'Support Wallet (Applicable only for Alipay Online)'
+                'description' => __('Support Wallet (Applicable only for Alipay Online)', 'yedpay_woocommerce')
             ],
             'yedpay_expiry_time' => [
                 'title' => __('Expiry Time', 'yedpay_woocommerce'),
                 'type' => 'text',
-                'description' => 'Online Payment Expiry Time in seconds (900-10800)',
-                'default' => __('10800', 'yedpay_woocommerce', 'yedpay_woocommerce')
+                'description' => __('Online Payment Expiry Time in seconds (900-10800)', 'yedpay_woocommerce'),
+                'default' => '10800'
             ],
             'yedpay_working_mode' => [
                 'title' => __('Payment Mode', 'yedpay_woocommerce'),
                 'type' => 'select',
-                'options' => ['live' => 'Live Mode', 'test' => 'Test/Sandbox Mode'],
-                'description' => 'Live/Test Mode'
+                'options' => ['live' => __('Live Mode', 'yedpay_woocommerce'), 'test' => __('Test/Sandbox Mode', 'yedpay_woocommerce')],
+                'description' => __('Live/Test Mode', 'yedpay_woocommerce')
             ],
         ];
     }
@@ -143,7 +143,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         echo '<p>' . __('Yedpay is All-in one Payment Platform for Merchant', 'yedpay_woocommerce') . '</p>';
         echo '<table class="form-table">';
         $this->generate_settings_html();
-        echo '<tr><td>(Module Version 1.0.0)</td></tr></table>';
+        echo '<tr><td>(' . __('Module Version', 'yedpay_woocommerce') . '1.0.0)</td></tr></table>';
     }
 
     /**
@@ -175,18 +175,18 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         // verify sign
         $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
         if (!$client->verifySign($_REQUEST, $this->yedpay_sign_key, ['wc-api', 'page_id', 'order-received', 'key'])) {
-            $this->error_response('Yedpay payment verify sign failed.');
+            $this->error_response(__('Yedpay payment verify sign failed.', 'yedpay_woocommerce'));
         }
 
         $order_id = sanitize_text_field($_REQUEST['transaction']['custom_id']);
         if (is_null($order_id)) {
-            $this->error_response('Order ID Not Found.');
+            $this->error_response(__('Order ID Not Found.', 'yedpay_woocommerce'));
         }
 
         try {
             $order = new WC_Order($order_id);
         } catch (Exception $e) {
-            $logger->error('Order Not Found.');
+            $logger->error(__('Order Not Found.', 'yedpay_woocommerce'));
         }
 
         // Update Order Status
@@ -291,7 +291,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 $orderNote = 'Yedpay payment Error.';
             }
             $order->add_order_note(__($orderNote, 'yedpay_woocommerce'));
-            $this->error_response($orderNote, $order);
+            $this->error_response(__($orderNote, 'yedpay_woocommerce'), $order);
         }
     }
 
