@@ -4,7 +4,7 @@
     "type": "wpackagist-plugin",
     "version": "1.0.1",
     "require": {
-        "yedpay/php-library": "1.1.0"
+        "yedpay/php-library": "1.2.0"
     },
     "license": "MIT",
     "repositories": [

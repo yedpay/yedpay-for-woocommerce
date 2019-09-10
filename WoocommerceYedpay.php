@@ -440,8 +440,6 @@ class WoocommerceYedpay extends WC_Payment_Gateway
     {
         if ($currency == Client::CURRENCY_HKD) {
             return Client::INDEX_CURRENCY_HKD;
-        } elseif ($currency == Client::CURRENCY_RMB) {
-            return Client::INDEX_CURRENCY_RMB;
         }
         return null;
     }
