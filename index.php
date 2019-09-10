@@ -3,7 +3,7 @@
 /*
   Plugin Name: Yedpay for WooCommerce
   Description: Extends WooCommerce to Process Payments with Yedpay.
-  Version: 1.0.0
+  Version: 1.0.1
   Plugin URI: https://wordpress.org/plugins/yedpay/
   Author: Yedpay
   Author URI: https://www.yedpay.com/

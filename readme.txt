@@ -5,7 +5,7 @@ Donate link:
 Tags: woocommerce Alipay, payment gateway, woocommerce, woocommerce payment gateway
 Requires at least: 3.0.1
 Tested up to: 5.2.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ This Payment Gateway For WooCommerce extends the functionality of WooCommerce to
 **Yedpay for WooCommerce** makes your website ready to use payment gateways of Yedpay on your ecommerce store in safe way. 
 
 
-Tested with Wordpress 5.2.2 , WooCommerce version 3.6.4
+Tested with Wordpress 5.2.2 , WooCommerce version 3.7.0
 
 = Features =
 Few features of this plugin:
@@ -39,7 +39,7 @@ Easy steps to install the plugin:
 
 == Frequently Asked Questions ==
 = What version of Wordpress and Woocommerce does this work with? =
-* Version 1.0.0 has been tested with Wordpress 5.2.2 , WooCommerce version 3.6.4
+* Version 1.0.1 has been tested with Wordpress 5.2.2 , WooCommerce version 3.7.0
 
 == Screenshots ==
 
@@ -49,5 +49,8 @@ Easy steps to install the plugin:
 4. Plugin Configuration
 
 == Changelog ==
+= 1.0.1 =
+* Add plugin icon and banner
+
 = 1.0.0 =
 * First Version
