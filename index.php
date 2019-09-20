@@ -1,16 +1,16 @@
 <?php
 
 /*
-  Plugin Name: Yedpay for WooCommerce
-  Description: Extends WooCommerce to Process Payments with Yedpay.
-  Version: 1.0.1
-  Plugin URI: https://wordpress.org/plugins/yedpay/
-  Author: Yedpay
-  Author URI: https://www.yedpay.com/
-  Developer: Yedpay
-  Developer URI:
-  License: Under GPL2
-  Note: Under Development
+ * Plugin Name: Yedpay for WooCommerce
+ * Plugin URI: https://wordpress.org/plugins/yedpay-for-woocommerce
+ * Description: Easily accept Alipay, AlipayHK and Wechat Pay on your Wordpress site using Yedpay WooCommerce payment gateway in one plugin for free.
+ * Version: 1.0.2
+ * Author: Yedpay
+ * Author URI: https://www.yedpay.com/
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: yedpay
+ * Domain Path: /languages/
  */
 
 if (!defined('ABSPATH')) {
