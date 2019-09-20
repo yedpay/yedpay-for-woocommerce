@@ -97,7 +97,6 @@ After installing and activating the plugin, navigate to your WooCommerce Setting
 == Changelog ==
 
 = 1.0.2 =
-* Updated: Changes refund method
 * Updated: documentation
 * Fixed: Resolve minor issues in currency support
 
