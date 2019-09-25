@@ -143,7 +143,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         echo '<p>' . __('Yedpay is All-in one Payment Platform for Merchant', 'yedpay_woocommerce') . '</p>';
         echo '<table class="form-table">';
         $this->generate_settings_html();
-        echo '<tr><td>(' . __('Module Version', 'yedpay_woocommerce') . '1.0.1)</td></tr></table>';
+        echo '<tr><td>(' . __('Module Version', 'yedpay_woocommerce') . '1.0.2)</td></tr></table>';
     }
 
     /**
@@ -440,8 +440,6 @@ class WoocommerceYedpay extends WC_Payment_Gateway
     {
         if ($currency == Client::CURRENCY_HKD) {
             return Client::INDEX_CURRENCY_HKD;
-        } elseif ($currency == Client::CURRENCY_RMB) {
-            return Client::INDEX_CURRENCY_RMB;
         }
         return null;
     }
