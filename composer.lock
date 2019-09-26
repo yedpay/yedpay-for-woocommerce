@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f99cb28bf05bddd7fc142b865a9dfe2",
+    "content-hash": "e28c414ce976646ed723dd4a2ddee57a",
     "packages": [
         {
             "name": "yedpay/php-library",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://git.yedpay.com/Backend/yedpay-api-client-php.git",
-                "reference": "a720eb44538358d36a00ca028fa516a292a6064f"
+                "url": "https://github.com/yedpay/php-library.git",
+                "reference": "813a1b1786cf49d4d44bd45f580d6cb173fbdd3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yedpay/php-library/zipball/813a1b1786cf49d4d44bd45f580d6cb173fbdd3b",
+                "reference": "813a1b1786cf49d4d44bd45f580d6cb173fbdd3b",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.5"
@@ -38,7 +44,11 @@
                 }
             ],
             "description": "Agnostic Library to use the Yedpay API for Precretae transactions",
-            "time": "2019-08-08T11:29:24+00:00"
+            "support": {
+                "source": "https://github.com/yedpay/php-library/tree/1.2.0",
+                "issues": "https://github.com/yedpay/php-library/issues"
+            },
+            "time": "2019-09-25T11:55:25+00:00"
         }
     ],
     "packages-dev": [],

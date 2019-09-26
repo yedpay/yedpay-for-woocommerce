@@ -3,10 +3,10 @@ Author URI: https://www.yedpay.com
 Donate link: 
 Plugin URI: https://wordpress.org/plugins/yedpay-for-woocommerce
 Contributors: yedpaykenny
-Tags: woocommerce, payment gateway, Yedpay, Alipay, WeChat Pay, HKD
+Tags: Alipay, WeChat pay, AlipayHK, Payment Gateway, woocommerce, woocommerce payment gateway
 Requires at least: 3.0.1
 Tested up to: 5.2.3
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,9 @@ After installing and activating the plugin, navigate to your WooCommerce Setting
 7. Order received page
 
 == Changelog ==
+
+= 1.0.3 =
+* Updated: Ability to refund by Woocommerce order_id
 
 = 1.0.2 =
 * Updated: documentation
