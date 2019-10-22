@@ -8,7 +8,7 @@ Easily accept Alipay, AlipayHK and Wechat Pay on your Wordpress site using Yedpa
 
 Hong Kong merchants can easily accept Wechat Pay and Alipay for their websites using Yedpay's payment gateway. Yedpay Gateway support Alipay CN, AlipayHK and WeChat Pay.
 
-Tested with Wordpress 5.2.3 , WooCommerce version 3.7.0
+Tested with Wordpress 5.2.4 , WooCommerce version 3.7.1
 
 ## Prerequisites
 * [WordPress](https://wordpress.com/)
