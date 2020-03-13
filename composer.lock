@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a0ab16f94ac4c07a1065f0517333868",
+    "content-hash": "7b16d2bb7f569228e1b2b6ae165fb98f",
     "packages": [
         {
             "name": "yedpay/php-library",

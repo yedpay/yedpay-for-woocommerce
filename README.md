@@ -1,14 +1,14 @@
 # Yedpay for WooCommerce
 
-Easily accept Alipay, AlipayHK and Wechat Pay on your Wordpress site using Yedpay WooCommerce payment gateway in one plugin for free.
+Easily accept Alipay, AlipayHK, Wechat Pay and UnionPay on your Wordpress site using Yedpay WooCommerce payment gateway in one plugin for free.
 
 ## Description
 
-**Yedpay for WooCommerce** makes your website ready to use Alipay and WeChat Pay payment on your ecommerce store in a safe way.
+**Yedpay for WooCommerce** makes your website ready to use Alipay, WeChat Pay and UnionPay payment on your ecommerce store in a safe way.
 
-Hong Kong merchants can easily accept Wechat Pay and Alipay for their websites using Yedpay's payment gateway. Yedpay Gateway support Alipay CN, AlipayHK and WeChat Pay.
+Hong Kong merchants can easily accept Alipay, Wechat Pay and UnionPay for their websites using Yedpay's payment gateway. Yedpay Gateway support Alipay CN, AlipayHK, WeChat Pay and UnionPay.
 
-Tested with Wordpress 5.2.4 , WooCommerce version 3.7.1
+Tested with Wordpress 5.3.2 , WooCommerce version 4.0.0
 
 ## Prerequisites
 * [WordPress](https://wordpress.com/)
@@ -22,8 +22,8 @@ The bank account needs to be a Hong Kong Bank Account.
 
 ## Features and Benefits
 
-* One Yedpay plugin to enable both Alipay CN, Alipay HK and WeChat Pay. No longer need to download and install two separate plugins.
-* The only plugin of this kind that Offers MOBILE friendly checkout experience that opens WeChat and Alipay APP directly.
+* One Yedpay plugin to enable both Alipay CN, Alipay HK, WeChat Pay and UnionPay. No longer need to download and install two separate plugins.
+* The only plugin of this kind that Offers MOBILE friendly checkout experience that opens WeChat, Alipay and UnionPay APP directly.
 * Extremely user-friendly checkout experience to increase conversion rate.
 * Full integration with WooCommerce.
 * Fast deposits: receive money in your account in two business days.
@@ -36,10 +36,10 @@ There is no set up fee, no monthly fee, no other hidden costs. Merchants pay a f
 
 ## How Does The Check Out Look Like?
 
-* At the check out page, choose Alipay CN, Alipay HK or WeChat Pay.
+* At the check out page, choose Alipay CN, Alipay HK, WeChat Pay or UnionPay.
 * With a PC browser, a page with the QR code will open.
-* Users can scan the QR code with the Alipay or WeChat App and confirm the payment on the phone.
-* With the WeChat or Mobile browser, clicking check out will automatically wakes up the WeChat app and the Alipay app. Users confirms the payment on the phone.
+* Users can scan the QR code with the Alipay, WeChat or UnionPay App and confirm the payment on the phone.
+* With the WeChat or Mobile browser, clicking check out will automatically wakes up the WeChat app, the Alipay app or the UnionPay app. Users confirms the payment on the phone.
 
 ## Quick Installation and Setup
 
@@ -54,7 +54,7 @@ In order to start using the plugin, you need to get Your API Key from Yedpay.
 2. Or activate the plugin through the 'Plugins' menu in WordPress.
 3. In WordPress -> Plugins menu, click "Add New". In the search field, search by "Yedpay".
 4. Install and activate the plugin.
-5. Go to Woocommerce -> Setting, click "Settings", select "Payment Gateways" tab.
+5. Go to WooCommerce -> Setting, click "Settings", select "Payment Gateways" tab.
 6. Under "Payment Gateways" you will find all the available gateways, select "Yedpay" option.
 7. you will be asked to enter Sign Key, APP ID and Payment mode.
 8. To get the Sign Key and APP ID, please go to [Yedpay merchant Portal](https://merchant.yedpay.com) to register a merchant account
