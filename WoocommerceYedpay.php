@@ -108,7 +108,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                     '0' => __('All', 'yedpay-for-woocommerce'),
                     '4_2' => __('Alipay Online Only', 'yedpay-for-woocommerce'),
                     '8_2' => __('WeChat Pay Online Only', 'yedpay-for-woocommerce'),
-                    '9_2' => __('UnionPay ExpressPay Only', 'yedpay-for-woocommerce'),
+                    '9_1' => __('UnionPay ExpressPay Only', 'yedpay-for-woocommerce'),
                     '9_5' => __('UnionPay UPOP Only', 'yedpay-for-woocommerce'),
                 ],
                 'description' => __('Support Gateways', 'yedpay-for-woocommerce')
@@ -148,7 +148,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         echo '<p>' . __('Yedpay is All-in one Payment Platform for Merchant', 'yedpay-for-woocommerce') . '</p>';
         echo '<table class="form-table">';
         $this->generate_settings_html();
-        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.0.5)</td></tr></table>';
+        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.0.6)</td></tr></table>';
     }
 
     /**
