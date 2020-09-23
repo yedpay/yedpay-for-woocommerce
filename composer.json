@@ -2,7 +2,7 @@
     "name": "yedpay/woocommerce",
     "description": "Yedpay WooCommerce Plugin",
     "type": "wpackagist-plugin",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "require": {
         "yedpay/php-library": "1.2.2"
     },

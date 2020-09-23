@@ -148,7 +148,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         echo '<p>' . __('Yedpay is All-in one Payment Platform for Merchant', 'yedpay-for-woocommerce') . '</p>';
         echo '<table class="form-table">';
         $this->generate_settings_html();
-        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.0.6)</td></tr></table>';
+        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.0.7)</td></tr></table>';
     }
 
     /**
@@ -198,7 +198,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         if ($order->get_status() == 'pending' || $order->get_status() == 'failed') {
             $status = sanitize_text_field($request['transaction']['status']);
 
-            // updating extra information in databaes corresponding to placed order.
+            // updating extra information in database corresponding to placed order.
             update_post_meta($order_id, 'yedpay_custom_id', $order_id);
             update_post_meta($order_id, 'yedpay_payment_status', $status);
 
@@ -255,25 +255,25 @@ class WoocommerceYedpay extends WC_Payment_Gateway
 
         $order = new WC_Order($order_id);
 
-        $checkoutUrl = $order->get_checkout_order_received_url();
-        $query_str = parse_url($checkoutUrl, PHP_URL_QUERY);
-        parse_str($query_str, $query_params);
-
-        $request = $_GET;
-
-        $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
-        if (!$client->verifySign($request, $this->yedpay_sign_key, array_keys($query_params))) {
-            $orderNote = 'Yedpay payment verify sign failed.';
-            // $this->error_response($orderNote, $order);
-            $order->add_order_note(__($orderNote, 'yedpay-for-woocommerce'));
-            return;
-        }
-
         if ($order->get_status() == 'pending' || $order->get_status() == 'failed') {
+            $checkoutUrl = $order->get_checkout_order_received_url();
+            $query_str = parse_url($checkoutUrl, PHP_URL_QUERY);
+            parse_str($query_str, $query_params);
+
+            $request = $_GET;
+
+            $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
+            if (!$client->verifySign($request, $this->yedpay_sign_key, array_keys($query_params))) {
+                $orderNote = 'Yedpay payment verify sign failed.';
+                // $this->error_response($orderNote, $order);
+                $order->add_order_note(__($orderNote, 'yedpay-for-woocommerce'));
+                return;
+            }
+
             $status = sanitize_text_field($request['status']);
             // $order_key = sanitize_text_field($request['key']);
 
-            // updating extra information in databaes corresponding to placed order.
+            // updating extra information in database corresponding to placed order.
             update_post_meta($order_id, 'yedpay_custom_id', $order_id);
             update_post_meta($order_id, 'yedpay_payment_status', $status);
 
