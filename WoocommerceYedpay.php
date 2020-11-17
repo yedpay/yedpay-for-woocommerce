@@ -26,7 +26,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->id = 'yedpay';
         $this->method_title = __('Yedpay', 'yedpay-for-woocommerce');
         $this->method_description = __('Extends WooCommerce to Process Payments with Yedpay.', 'yedpay-for-woocommerce');
-        $this->icon = $this->get_image_path() . 'yedpay.png';
+        $this->icon = $this->get_image_path() . 'yedpay.svg';
         $this->has_fields = false;
         $this->supports = ['products', 'refunds'];
 
@@ -148,7 +148,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         echo '<p>' . __('Yedpay is All-in one Payment Platform for Merchant', 'yedpay-for-woocommerce') . '</p>';
         echo '<table class="form-table">';
         $this->generate_settings_html();
-        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.0.7)</td></tr></table>';
+        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.0.8)</td></tr></table>';
     }
 
     /**
@@ -584,4 +584,19 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             load_plugin_textdomain('yedpay-for-woocommerce', false, $plugin_lang_dir);
         }
     }
+
+    /**
+	 * Get gateway icon.
+	 *
+	 * @access public
+	 * @return string
+	 */
+    public function get_icon()
+    {
+        $icon_width = '120';
+        $icon_path = !empty ($this->icon) ? $this->icon : $this->get_image_path() . 'yedpay.svg';
+        $icon_html = '<img src="' . $icon_path . '" alt="' . $this->title . '" style="max-width:' . $icon_width . 'px;"/>';
+
+		return apply_filters('woocommerce_gateway_icon', $icon_html, $this->id);
+	}
 }
