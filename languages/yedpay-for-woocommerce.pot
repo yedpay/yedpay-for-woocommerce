@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yedpay for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://www.yedpay.com/\n"
-"POT-Creation-Date: 2020-04-09 16:17+0800\n"
+"POT-Creation-Date: 2021-04-30 10:50+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2020-04-09 15:48+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Extends WooCommerce to Process Payments with Yedpay."
 msgstr ""
 
-#: WoocommerceYedpay.php:41 WoocommerceYedpay.php:135
+#: WoocommerceYedpay.php:41 WoocommerceYedpay.php:136
 msgid "Test/Sandbox Mode"
 msgstr ""
 
@@ -81,7 +81,7 @@ msgstr ""
 msgid "Gateway"
 msgstr ""
 
-#: WoocommerceYedpay.php:108 WoocommerceYedpay.php:120
+#: WoocommerceYedpay.php:108 WoocommerceYedpay.php:121
 msgid "All"
 msgstr ""
 
@@ -93,10 +93,6 @@ msgstr ""
 msgid "WeChat Pay Online Only"
 msgstr ""
 
-#: WoocommerceYedpay.php:108
-msgid "UnionPay ExpressPay Only"
-msgstr ""
-
 #: WoocommerceYedpay.php:111
 msgid "UnionPay ExpressPay Only"
 msgstr ""
@@ -105,108 +101,108 @@ msgstr ""
 msgid "UnionPay UPOP Only"
 msgstr ""
 
-#: WoocommerceYedpay.php:114
+#: WoocommerceYedpay.php:113
+msgid "Visa/mastercard Only"
+msgstr ""
+
+#: WoocommerceYedpay.php:115
 msgid "Support Gateways"
 msgstr ""
 
-#: WoocommerceYedpay.php:117
+#: WoocommerceYedpay.php:118
 msgid "Gateway Wallet"
 msgstr ""
 
-#: WoocommerceYedpay.php:121
+#: WoocommerceYedpay.php:122
 msgid "Hong Kong Wallet"
 msgstr ""
 
-#: WoocommerceYedpay.php:122
+#: WoocommerceYedpay.php:123
 msgid "China Wallet"
 msgstr ""
 
-#: WoocommerceYedpay.php:124
+#: WoocommerceYedpay.php:125
 msgid "Support Wallet (Applicable only for Alipay Online)"
 msgstr ""
 
-#: WoocommerceYedpay.php:127
+#: WoocommerceYedpay.php:128
 msgid "Expiry Time"
 msgstr ""
 
-#: WoocommerceYedpay.php:129
+#: WoocommerceYedpay.php:130
 msgid "Online Payment Expiry Time in seconds (900-10800)"
 msgstr ""
 
-#: WoocommerceYedpay.php:133
+#: WoocommerceYedpay.php:134
 msgid "Payment Mode"
 msgstr ""
 
-#: WoocommerceYedpay.php:135
+#: WoocommerceYedpay.php:136
 msgid "Live Mode"
 msgstr ""
 
-#: WoocommerceYedpay.php:136
+#: WoocommerceYedpay.php:137
 msgid "Live/Test Mode"
 msgstr ""
 
-#: WoocommerceYedpay.php:147
+#: WoocommerceYedpay.php:148
 msgid "Yedpay Payment Method Configuration"
 msgstr ""
 
-#: WoocommerceYedpay.php:148
+#: WoocommerceYedpay.php:149
 msgid "Yedpay is All-in one Payment Platform for Merchant"
 msgstr ""
 
-#: WoocommerceYedpay.php:151
+#: WoocommerceYedpay.php:152
 msgid "Module Version"
 msgstr ""
 
-#: WoocommerceYedpay.php:183
+#: WoocommerceYedpay.php:181
 msgid "Yedpay payment notification verify sign failed."
 msgstr ""
 
-#: WoocommerceYedpay.php:188
+#: WoocommerceYedpay.php:186
 msgid "Order ID Not Found."
 msgstr ""
 
-#: WoocommerceYedpay.php:194 WoocommerceYedpay.php:501
+#: WoocommerceYedpay.php:192 WoocommerceYedpay.php:497
 msgid "Order Not Found."
 msgstr ""
 
-#: WoocommerceYedpay.php:219 WoocommerceYedpay.php:295
+#: WoocommerceYedpay.php:217 WoocommerceYedpay.php:293
 msgid "Yedpay payment cancelled."
 msgstr ""
 
-#: WoocommerceYedpay.php:222
+#: WoocommerceYedpay.php:220
 msgid "Yedpay payment failed."
 msgstr ""
 
-#: WoocommerceYedpay.php:224
+#: WoocommerceYedpay.php:222
 msgid "Yedpay payment Error."
 msgstr ""
 
-#: WoocommerceYedpay.php:314
+#: WoocommerceYedpay.php:312
 msgid "Thank you for your order, please click the button below to pay with Yedpay."
 msgstr ""
 
-#: WoocommerceYedpay.php:363
-msgid "Yedpay Precreate failed. Error Message: "
-msgstr ""
-
-#: WoocommerceYedpay.php:426
+#: WoocommerceYedpay.php:422
 msgid "Payment has been declined"
 msgstr ""
 
-#: WoocommerceYedpay.php:440
+#: WoocommerceYedpay.php:436
 msgid "Yedpay payment failed. Couldn't connect to gateway server."
 msgstr ""
 
-#: WoocommerceYedpay.php:441
+#: WoocommerceYedpay.php:437
 msgid ""
 "No response from payment gateway server. Try again later or contact the site "
 "administrator."
 msgstr ""
 
-#: WoocommerceYedpay.php:505
+#: WoocommerceYedpay.php:501
 msgid "Refund amount must be equal to Order total amount."
 msgstr ""
 
-#: WoocommerceYedpay.php:508
+#: WoocommerceYedpay.php:504
 msgid "Order has been already refunded."
 msgstr ""

@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Yedpay for WooCommerce\n"
-"POT-Creation-Date: 2020-04-16 11:55+0800\n"
-"PO-Revision-Date: 2020-04-16 11:55+0800\n"
+"POT-Creation-Date: 2021-04-30 10:52+0800\n"
+"PO-Revision-Date: 2021-04-30 10:55+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_HK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __\n"
@@ -23,7 +23,7 @@ msgstr "Yedpay"
 msgid "Extends WooCommerce to Process Payments with Yedpay."
 msgstr "可以在WooCommerce使用Yedpay進行交易。"
 
-#: WoocommerceYedpay.php:41 WoocommerceYedpay.php:135
+#: WoocommerceYedpay.php:41 WoocommerceYedpay.php:136
 msgid "Test/Sandbox Mode"
 msgstr "測試模式"
 
@@ -75,7 +75,7 @@ msgstr "你的Yedpay Sign Key"
 msgid "Gateway"
 msgstr "支付渠道"
 
-#: WoocommerceYedpay.php:108 WoocommerceYedpay.php:120
+#: WoocommerceYedpay.php:108 WoocommerceYedpay.php:121
 msgid "All"
 msgstr "全部"
 
@@ -95,109 +95,109 @@ msgstr "只有UnionPay ExpressPay"
 msgid "UnionPay UPOP Only"
 msgstr "只有UnionPay UPOP"
 
-#: WoocommerceYedpay.php:114
+#: WoocommerceYedpay.php:113
+msgid "Visa/mastercard Only"
+msgstr "只有Visa/mastercard"
+
+#: WoocommerceYedpay.php:115
 msgid "Support Gateways"
 msgstr "支援的支付渠道"
 
-#: WoocommerceYedpay.php:117
+#: WoocommerceYedpay.php:118
 msgid "Gateway Wallet"
 msgstr "支付渠道錢包"
 
-#: WoocommerceYedpay.php:121
+#: WoocommerceYedpay.php:122
 msgid "Hong Kong Wallet"
 msgstr "香港錢包"
 
-#: WoocommerceYedpay.php:122
+#: WoocommerceYedpay.php:123
 msgid "China Wallet"
 msgstr "內地錢包"
 
-#: WoocommerceYedpay.php:124
+#: WoocommerceYedpay.php:125
 msgid "Support Wallet (Applicable only for Alipay Online)"
 msgstr "支援錢包 (適用於Alipay Online)"
 
-#: WoocommerceYedpay.php:127
+#: WoocommerceYedpay.php:128
 msgid "Expiry Time"
 msgstr "有效期限"
 
-#: WoocommerceYedpay.php:129
+#: WoocommerceYedpay.php:130
 msgid "Online Payment Expiry Time in seconds (900-10800)"
 msgstr "網上交易有效期限 (900-10800秒)"
 
-#: WoocommerceYedpay.php:133
+#: WoocommerceYedpay.php:134
 msgid "Payment Mode"
 msgstr "付款方式"
 
-#: WoocommerceYedpay.php:135
+#: WoocommerceYedpay.php:136
 msgid "Live Mode"
 msgstr "生產模式"
 
-#: WoocommerceYedpay.php:136
+#: WoocommerceYedpay.php:137
 msgid "Live/Test Mode"
 msgstr "生產/測試模式"
 
-#: WoocommerceYedpay.php:147
+#: WoocommerceYedpay.php:148
 msgid "Yedpay Payment Method Configuration"
 msgstr "Yedpay商戶一站式收款平台設定"
 
-#: WoocommerceYedpay.php:148
+#: WoocommerceYedpay.php:149
 msgid "Yedpay is All-in one Payment Platform for Merchant"
 msgstr "Yedpay - 商戶一站式收款平台"
 
-#: WoocommerceYedpay.php:151
+#: WoocommerceYedpay.php:152
 msgid "Module Version"
 msgstr "插件版本"
 
-#: WoocommerceYedpay.php:183
+#: WoocommerceYedpay.php:181
 msgid "Yedpay payment notification verify sign failed."
 msgstr "Yedpay交易通知簽名驗證失敗。"
 
-#: WoocommerceYedpay.php:188
+#: WoocommerceYedpay.php:186
 msgid "Order ID Not Found."
 msgstr "訂單編號不存在。"
 
-#: WoocommerceYedpay.php:194 WoocommerceYedpay.php:501
+#: WoocommerceYedpay.php:192 WoocommerceYedpay.php:497
 msgid "Order Not Found."
 msgstr "訂單不存在。"
 
-#: WoocommerceYedpay.php:219 WoocommerceYedpay.php:295
+#: WoocommerceYedpay.php:217 WoocommerceYedpay.php:293
 msgid "Yedpay payment cancelled."
 msgstr "Yedpay交易取消。"
 
-#: WoocommerceYedpay.php:222
+#: WoocommerceYedpay.php:220
 msgid "Yedpay payment failed."
 msgstr "Yedpay交易失敗。"
 
-#: WoocommerceYedpay.php:224
+#: WoocommerceYedpay.php:222
 msgid "Yedpay payment Error."
 msgstr "Yedpay交易錯誤。"
 
-#: WoocommerceYedpay.php:314
+#: WoocommerceYedpay.php:312
 msgid ""
 "Thank you for your order, please click the button below to pay with Yedpay."
 msgstr "多謝你的訂單，請按以下按鈕確認使用Yedpay交易。"
 
-#: WoocommerceYedpay.php:363
-msgid "Yedpay Precreate failed. Error Message: "
-msgstr "Yedpay Precreate交易失敗。錯誤訊息 - "
-
-#: WoocommerceYedpay.php:426
+#: WoocommerceYedpay.php:422
 msgid "Payment has been declined"
 msgstr "交易已被拒絕"
 
-#: WoocommerceYedpay.php:440
+#: WoocommerceYedpay.php:436
 msgid "Yedpay payment failed. Couldn't connect to gateway server."
 msgstr "Yedpay交易失敗。未能連接交易渠道伺服器。"
 
-#: WoocommerceYedpay.php:441
+#: WoocommerceYedpay.php:437
 msgid ""
 "No response from payment gateway server. Try again later or contact the site "
 "administrator."
 msgstr "交易渠道未有回應。請稍候再試或聯絡商戶。"
 
-#: WoocommerceYedpay.php:505
+#: WoocommerceYedpay.php:501
 msgid "Refund amount must be equal to Order total amount."
 msgstr "退款金額必須等於訂單金額。"
 
-#: WoocommerceYedpay.php:508
+#: WoocommerceYedpay.php:504
 msgid "Order has been already refunded."
 msgstr "訂單已經完成退款。"
