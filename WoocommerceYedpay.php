@@ -148,7 +148,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         echo '<p>' . __('Yedpay is All-in one Payment Platform for Merchant', 'yedpay-for-woocommerce') . '</p>';
         echo '<table class="form-table">';
         $this->generate_settings_html();
-        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.0.8)</td></tr></table>';
+        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.0.9)</td></tr></table>';
     }
 
     /**
@@ -159,9 +159,6 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         if ($this->description) {
             echo wpautop(wptexturize($this->description));
         }
-
-        $currentUser = wp_get_current_user();
-        $userId = $currentUser->ID;
     }
 
     /**
@@ -191,7 +188,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         try {
             $order = new WC_Order($order_id);
         } catch (Exception $e) {
-            $logger->error(__('Order Not Found.', 'yedpay-for-woocommerce'));
+            $this->error_response(__('Order Not Found.', 'yedpay-for-woocommerce'));
         }
 
         // Update Order Status
@@ -360,7 +357,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             $server_output = $client->onlinePayment($order_id, $order->order_total);
         } catch (Exception $e) {
             // No response or unexpected response
-            $order->add_order_note(__('Yedpay Precreate failed. Error Message: ' . $e->getMessage(), 'yedpay-for-woocommerce'));
+            $order->add_order_note('Yedpay Precreate failed. Error Message: ' . esc_html($e->getMessage()));
             $this->get_response($order);
             return;
         }
@@ -373,10 +370,8 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                     'redirect' => $data->checkout_url,
                 ];
         } elseif ($server_output instanceof Error) {
-            $message = 'Yedpay Precreate failed. ' .
-                        'Error Code: ' . $server_output->getErrorCode() . '. ' .
-                        'Error Message: ' . $server_output->getMessage();
-            $order->add_order_note(__($message, 'yedpay-for-woocommerce'));
+            $message = $this->getServerOutputErrorMessage($server_output, 'Precreate');
+            $order->add_order_note($message);
         }
 
         // No response or unexpected response
@@ -527,10 +522,8 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 return true;
             }
         } elseif ($server_output instanceof Error) {
-            $message = 'Yedpay Refund failed. ' .
-                        'Error Code: ' . $server_output->getErrorCode() . '. ' .
-                        'Error Message: ' . $server_output->getMessage();
-            $order->add_order_note(__($message, 'yedpay-for-woocommerce'));
+            $message = $this->getServerOutputErrorMessage($server_output, 'Refund');
+            $order->add_order_note($message);
             $logger->error($message);
             return new WP_Error('Error', $message);
         }
@@ -586,17 +579,42 @@ class WoocommerceYedpay extends WC_Payment_Gateway
     }
 
     /**
-	 * Get gateway icon.
-	 *
-	 * @access public
-	 * @return string
-	 */
+     * Get gateway icon.
+     *
+     * @access public
+     * @return string
+     */
     public function get_icon()
     {
         $icon_width = '120';
-        $icon_path = !empty ($this->icon) ? $this->icon : $this->get_image_path() . 'yedpay.svg';
+        $icon_path = !empty($this->icon) ? $this->icon : $this->get_image_path() . 'yedpay.svg';
         $icon_html = '<img src="' . $icon_path . '" alt="' . $this->title . '" style="max-width:' . $icon_width . 'px;"/>';
 
-		return apply_filters('woocommerce_gateway_icon', $icon_html, $this->id);
-	}
+        return apply_filters('woocommerce_gateway_icon', $icon_html, $this->id);
+    }
+
+    /**
+    * function to show error message from server output
+    *
+    * @param Error $server_output
+    * @param string $type
+    * @return string
+    */
+    protected function getServerOutputErrorMessage($server_output, $type)
+    {
+        $message = "Yedpay {$type} failed.";
+
+        if ($server_output->getErrorCode() == 422 && is_array($server_output->getErrors())) {
+            foreach ($server_output->getErrors() as $validationErrors) {
+                $message .= '<br>';
+                foreach ($validationErrors as $errorKey => $errorInfo) {
+                    $message .= '<br>Error ' . esc_html("{$errorKey}: {$errorInfo}");
+                }
+            }
+        } else {
+            $message .= '<br>Error Code: ' . esc_html($server_output->getErrorCode()) .
+                '<br>Error Message: ' . esc_html($server_output->getMessage());
+        }
+        return $message;
+    }
 }
