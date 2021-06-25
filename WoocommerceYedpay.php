@@ -326,8 +326,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
 
             $redirect_url = (get_option('woocommerce_thanks_page_id') != '') ? get_permalink(get_option('woocommerce_thanks_page_id')) : get_site_url() . '/';
         } else {
-            $order_meta = get_post_custom($order_id);
-            $currency = $order_meta['_order_currency'][0];
+            $currency = $order->get_currency();
 
             $redirect_url = $this->get_return_url($order);
         }
