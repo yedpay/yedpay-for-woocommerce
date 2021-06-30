@@ -6,7 +6,7 @@ Contributors: yedpaykenny
 Tags: Alipay, WeChat pay, AlipayHK, UnionPay, Payment Gateway, woocommerce, woocommerce payment gateway
 Requires at least: 3.0.1
 Tested up to: 5.7.1
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,9 @@ After installing and activating the plugin, navigate to your WooCommerce Setting
 8. Order received page
 
 == Changelog ==
+
+= 1.1.0 =
+* Added: Support order id prefix
 
 = 1.0.9 =
 * Fixed: Resolve issues in error handling

@@ -49,6 +49,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_gateway = $this->settings['yedpay_gateway'];
         $this->yedpay_gateway_wallet = $this->settings['yedpay_gateway_wallet'];
         $this->yedpay_expiry_time = $this->settings['yedpay_expiry_time'];
+        $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
 
         // Saving admin options
         if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
@@ -129,6 +130,11 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 'description' => __('Online Payment Expiry Time in seconds (900-10800)', 'yedpay-for-woocommerce'),
                 'default' => '10800'
             ],
+            'yedpay_custom_id_prefix' => [
+                'title' => __('Custom ID Prefix', 'yedpay-for-woocommerce'),
+                'type' => 'text',
+                'description' => __('Order ID Prefix (Maximum: 10 characters, accept only English letters)', 'yedpay-for-woocommerce'),
+            ],
             'yedpay_working_mode' => [
                 'title' => __('Payment Mode', 'yedpay-for-woocommerce'),
                 'type' => 'select',
@@ -136,6 +142,50 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 'description' => __('Live/Test Mode', 'yedpay-for-woocommerce')
             ],
         ];
+    }
+
+    /**
+     * Validate the yedpay custom id prefix
+     *
+     * @param string $key
+     * @param string $value
+     * @return string
+     *
+     */
+    public function validate_yedpay_custom_id_prefix_field($key, $value)
+    {
+        // check if the Custom id prefix is maximum 10 characters, accept only English letters.
+        if (isset($value) &&
+            !empty($value) &&
+            !preg_match('/^[a-zA-Z]{1,10}$/', $value)) {
+            $error_message = "Invalid custom id prefix value: {$value}";
+            WC_Admin_Settings::add_error($error_message);
+            throw new Exception($error_message);
+        }
+        return $value;
+    }
+
+    /**
+     * Validate the yedpay expiry time
+     *
+     * @param string $key
+     * @param string $value
+     * @return string
+     *
+     */
+    public function validate_yedpay_expiry_time_field($key, $value)
+    {
+        // check if the Expiry time is longer than 900 seconds and shorter than 10800 seconds.
+        if (isset($value) &&
+            is_numeric($value) &&
+            filter_var($value, FILTER_VALIDATE_INT) &&
+            $value >= '900' &&
+            $value <= '10800') {
+            return $value;
+        }
+        $error_message = "Invalid expiry time value: {$value}";
+        WC_Admin_Settings::add_error($error_message);
+        throw new Exception($error_message);
     }
 
     /**
@@ -148,7 +198,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         echo '<p>' . __('Yedpay is All-in one Payment Platform for Merchant', 'yedpay-for-woocommerce') . '</p>';
         echo '<table class="form-table">';
         $this->generate_settings_html();
-        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.0.9)</td></tr></table>';
+        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.1.0)</td></tr></table>';
     }
 
     /**
@@ -180,9 +230,19 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             $this->error_response(__('Yedpay payment notification verify sign failed.', 'yedpay-for-woocommerce'));
         }
 
-        $order_id = sanitize_text_field($request['transaction']['custom_id']);
-        if (is_null($order_id)) {
+        $custom_id = sanitize_text_field($request['transaction']['custom_id']);
+        if (is_null($custom_id)) {
             $this->error_response(__('Order ID Not Found.', 'yedpay-for-woocommerce'));
+        }
+
+        // get order id
+        $custom_id_prefix = $this->yedpay_custom_id_prefix;
+        if (!empty($custom_id_prefix) && strpos($custom_id, $custom_id_prefix . '-') !== false) {
+            $order_id = substr($custom_id, strlen($custom_id_prefix . '-'));
+        } elseif (strpos($custom_id, '-') !== false) {
+            $order_id = explode('-', $custom_id)[1];
+        } else {
+            $order_id = $custom_id;
         }
 
         try {
@@ -196,7 +256,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             $status = sanitize_text_field($request['transaction']['status']);
 
             // updating extra information in database corresponding to placed order.
-            update_post_meta($order_id, 'yedpay_custom_id', $order_id);
+            update_post_meta($order_id, 'yedpay_custom_id', $custom_id);
             update_post_meta($order_id, 'yedpay_payment_status', $status);
 
             // Update Order Status
@@ -271,7 +331,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             // $order_key = sanitize_text_field($request['key']);
 
             // updating extra information in database corresponding to placed order.
-            update_post_meta($order_id, 'yedpay_custom_id', $order_id);
+            update_post_meta($order_id, 'yedpay_custom_id', sanitize_text_field($request['custom_id']));
             update_post_meta($order_id, 'yedpay_payment_status', $status);
 
             // Update Order Status
@@ -332,12 +392,14 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         }
 
         try {
+            $custom_id = $this->getCustomOrderId($order_id);
+
             $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
             $client
                 ->setCurrency($this->get_currency($currency))
                 ->setReturnUrl($redirect_url)
                 ->setNotifyUrl($this->notify_url)
-                ->setSubject('Order #' . $order_id);
+                ->setSubject('Order #: ' . $custom_id);
 
             if ($this->yedpay_gateway != '0') {
                 $client->setGatewayCode($this->yedpay_gateway);
@@ -353,7 +415,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 $client->setExpiryTime($this->yedpay_expiry_time);
             }
 
-            $server_output = $client->onlinePayment($order_id, $order->order_total);
+            $server_output = $client->onlinePayment($custom_id, $order->order_total);
         } catch (Exception $e) {
             // No response or unexpected response
             $order->add_order_note('Yedpay Precreate failed. Error Message: ' . esc_html($e->getMessage()));
@@ -502,9 +564,14 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             return new WP_Error('wc-order', __('Order has been already refunded.', 'yedpay-for-woocommerce'));
         }
 
+        $custom_id = get_post_meta($order_id, 'yedpay_custom_id', true);
+        if (empty($custom_id)) {
+            $custom_id = $this->getCustomOrderId($order_id);
+        }
+
         try {
             $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
-            $server_output = $client->refundByCustomId($order_id, !empty($reason) ? $reason : null);
+            $server_output = $client->refundByCustomId($custom_id, !empty($reason) ? $reason : null);
         } catch (Exception $e) {
             // No response or unexpected response
             $message = "Yedpay Refund failed. Couldn't connect to gateway server.";
@@ -615,5 +682,19 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 '<br>Error Message: ' . esc_html($server_output->getMessage());
         }
         return $message;
+    }
+
+    /**
+    * function to get custom order id
+    *
+    * @param string $order_id
+    * @return string
+    */
+    protected function getCustomOrderId($order_id)
+    {
+        if (!empty($this->yedpay_custom_id_prefix)) {
+            return $this->yedpay_custom_id_prefix . '-' . $order_id;
+        }
+        return $order_id;
     }
 }
