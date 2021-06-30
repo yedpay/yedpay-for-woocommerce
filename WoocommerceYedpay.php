@@ -51,6 +51,8 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_expiry_time = $this->settings['yedpay_expiry_time'];
         $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
 
+        $this->yedpay_version = '1.1.0';
+
         // Saving admin options
         if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
             add_action('woocommerce_update_options_payment_gateways_' . $this->id, [&$this, 'process_admin_options']);
@@ -198,7 +200,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         echo '<p>' . __('Yedpay is All-in one Payment Platform for Merchant', 'yedpay-for-woocommerce') . '</p>';
         echo '<table class="form-table">';
         $this->generate_settings_html();
-        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' 1.1.0)</td></tr></table>';
+        echo '<tr><td>(' . __('Module Version', 'yedpay-for-woocommerce') . ' ' . $this->yedpay_version . ')</td></tr></table>';
     }
 
     /**
@@ -377,6 +379,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
     public function process_payment($order_id)
     {
         global $woocommerce;
+        global $wp_version;
 
         $order = new WC_Order($order_id);
 
@@ -399,7 +402,12 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 ->setCurrency($this->get_currency($currency))
                 ->setReturnUrl($redirect_url)
                 ->setNotifyUrl($this->notify_url)
-                ->setSubject('Order #: ' . $custom_id);
+                ->setSubject('Order: ' . $custom_id)
+                ->setMetadata(json_encode([
+                    'woocommerce' => WC_VERSION,
+                    'yedpay_for_woocommerce' => $this->yedpay_version,
+                    'wordpress' => $wp_version,
+                ]));
 
             if ($this->yedpay_gateway != '0') {
                 $client->setGatewayCode($this->yedpay_gateway);
@@ -414,6 +422,21 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             ) {
                 $client->setExpiryTime($this->yedpay_expiry_time);
             }
+
+            $billing_country = sanitize_text_field($order->get_billing_country());
+            $billing_address = [
+                'email' => $order->get_billing_email(),
+                'billing_country' => $billing_country,
+                'billing_post_code' => $order->get_billing_postcode(),
+                'billing_city' => $order->get_billing_city(),
+                'billing_address1' => $order->get_billing_address_1(),
+                'billing_address2' => $order->get_billing_address_2(),
+            ];
+
+            if ($billing_country == 'US' || $billing_country == 'CA') {
+                $billing_address['billing_state'] = sanitize_text_field($order->get_billing_state());
+            }
+            $client->setPaymentData(json_encode($billing_address));
 
             $server_output = $client->onlinePayment($custom_id, $order->order_total);
         } catch (Exception $e) {
