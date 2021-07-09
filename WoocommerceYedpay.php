@@ -580,8 +580,8 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             return new WP_Error('wc-order', __('Order Not Found.', 'yedpay-for-woocommerce'));
         }
 
-        if ($amount != $order->get_total()) {
-            return new WP_Error('IllegalAmount', __('Refund amount must be equal to Order total amount.', 'yedpay-for-woocommerce'));
+        if ($amount > $order->get_remaining_refund_amount()) {
+            return new WP_Error('IllegalAmount', __('Refund amount must be less than or equal to Order total amount.', 'yedpay-for-woocommerce'));
         }
         if ($order->get_status() == 'refunded') {
             return new WP_Error('wc-order', __('Order has been already refunded.', 'yedpay-for-woocommerce'));
@@ -594,7 +594,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
 
         try {
             $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
-            $server_output = $client->refundByCustomId($custom_id, !empty($reason) ? $reason : null);
+            $server_output = $client->refundByCustomId($custom_id, !empty($reason) ? $reason : null, $amount);
         } catch (Exception $e) {
             // No response or unexpected response
             $message = "Yedpay Refund failed. Couldn't connect to gateway server.";
