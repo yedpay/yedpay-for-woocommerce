@@ -134,7 +134,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 'default' => '10800'
             ],
             'yedpay_custom_id_prefix' => [
-                'title' => __('Custom ID Prefix', 'yedpay-for-woocommerce'),
+                'title' => __('Order ID Prefix', 'yedpay-for-woocommerce'),
                 'type' => 'text',
                 'description' => __('Order ID Prefix (Maximum: 10 characters, accept only English letters)', 'yedpay-for-woocommerce'),
             ],

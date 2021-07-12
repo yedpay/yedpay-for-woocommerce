@@ -1,14 +1,14 @@
 # Yedpay for WooCommerce
 
-Easily accept Alipay, AlipayHK, Wechat Pay and UnionPay on your Wordpress site using Yedpay WooCommerce payment gateway in one plugin for free.
+Easily accept Alipay, AlipayHK, Wechat Pay, UnionPay, Visa and mastercard on your Wordpress site using Yedpay WooCommerce payment gateway in one plugin for free.
 
 ## Description
 
-**Yedpay for WooCommerce** makes your website ready to use Alipay, WeChat Pay and UnionPay payment on your ecommerce store in a safe way.
+**Yedpay for WooCommerce** makes your website ready to use Alipay, WeChat Pay, UnionPay, Visa and mastercard payment on your ecommerce store in a safe way.
 
-Hong Kong merchants can easily accept Alipay, Wechat Pay and UnionPay for their websites using Yedpay's payment gateway. Yedpay Gateway support Alipay CN, AlipayHK, WeChat Pay and UnionPay.
+Hong Kong merchants can easily accept Alipay, Wechat Pay, UnionPay, Visa and mastercard for their websites using Yedpay's payment gateway. Yedpay Gateway support Alipay CN, AlipayHK, WeChat Pay, UnionPay, Visa and mastercard.
 
-Tested with Wordpress 5.7.2 , WooCommerce version 5.3.0
+Tested with Wordpress 5.7.2 , WooCommerce version 5.4.1
 
 ## Prerequisites
 * [WordPress](https://wordpress.com/)
@@ -22,7 +22,7 @@ The bank account needs to be a Hong Kong Bank Account.
 
 ## Features and Benefits
 
-* One Yedpay plugin to enable both Alipay CN, Alipay HK, WeChat Pay and UnionPay. No longer need to download and install two separate plugins.
+* One Yedpay plugin to enable both Alipay CN, Alipay HK, WeChat Pay, UnionPay, Visa and mastercard. No longer need to download and install two separate plugins.
 * The only plugin of this kind that Offers MOBILE friendly checkout experience that opens WeChat, Alipay and UnionPay APP directly.
 * Extremely user-friendly checkout experience to increase conversion rate.
 * Full integration with WooCommerce.
