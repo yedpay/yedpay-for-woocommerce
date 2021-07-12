@@ -12,7 +12,7 @@
  * Text Domain: yedpay-for-woocommerce
  * Domain Path: /languages
  * WC requires at least: 3.0.0
- * WC tested up to: 5.4.1
+ * WC tested up to: 5.5.0
  */
 
 if (!defined('ABSPATH')) {
