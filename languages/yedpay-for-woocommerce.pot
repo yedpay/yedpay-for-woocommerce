@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yedpay for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://www.yedpay.com/\n"
-"POT-Creation-Date: 2021-07-12 15:05+0800\n"
+"POT-Creation-Date: 2021-07-14 16:00+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -208,17 +208,17 @@ msgid ""
 msgstr ""
 
 #: WoocommerceYedpay.php:569
-msgid "Refund amount must be less than or equal to Order remaining refund amount."
+msgid "Refund amount must be at least 0.1."
 msgstr ""
 
-#: WoocommerceYedpay.php:572
+#: WoocommerceYedpay.php:573
 msgid "Order has been already refunded."
 msgstr ""
 
-#: WoocommerceYedpay.php:694
+#: WoocommerceYedpay.php:695
 msgid "Receive Yedpay refund notification."
 msgstr ""
 
-#: WoocommerceYedpay.php:707 WoocommerceYedpay.php:718
+#: WoocommerceYedpay.php:708 WoocommerceYedpay.php:719
 msgid "Refund requested exceeds remaining order balance of "
 msgstr ""

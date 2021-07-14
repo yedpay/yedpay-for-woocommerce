@@ -565,9 +565,10 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             return new WP_Error('wc-order', __('Order Not Found.', 'yedpay-for-woocommerce'));
         }
 
-        if ($amount > $order->get_remaining_refund_amount()) {
-            return new WP_Error('IllegalAmount', __('Refund amount must be less than or equal to Order remaining refund amount.', 'yedpay-for-woocommerce'));
+        if ($amount < 0.1) {
+            return new WP_Error('IllegalAmount', __('Refund amount must be at least 0.1.'));
         }
+
         if ($order->get_status() == 'refunded') {
             return new WP_Error('wc-order', __('Order has been already refunded.', 'yedpay-for-woocommerce'));
         }
