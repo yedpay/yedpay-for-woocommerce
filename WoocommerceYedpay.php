@@ -51,7 +51,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_expiry_time = $this->settings['yedpay_expiry_time'];
         $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
 
-        $this->yedpay_version = '1.1.0';
+        $this->yedpay_version = '1.1.1';
 
         // Saving admin options
         if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
