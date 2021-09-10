@@ -50,8 +50,9 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_gateway_wallet = $this->settings['yedpay_gateway_wallet'];
         $this->yedpay_expiry_time = $this->settings['yedpay_expiry_time'];
         $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
+        $this->yedpay_checkout_domain_id = $this->settings['yedpay_checkout_domain_id'];
 
-        $this->yedpay_version = '1.1.1';
+        $this->yedpay_version = '1.1.2';
 
         // Saving admin options
         if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
@@ -137,6 +138,11 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 'title' => __('Order ID Prefix', 'yedpay-for-woocommerce'),
                 'type' => 'text',
                 'description' => __('Order ID Prefix (Maximum: 10 characters, accept only English letters)', 'yedpay-for-woocommerce'),
+            ],
+            'yedpay_checkout_domain_id' => [
+                'title' => __('Checkout Domain ID', 'yedpay-for-woocommerce'),
+                'type' => 'text',
+                'description' => __('Your Checkout Domain ID from Yedpay', 'yedpay-for-woocommerce'),
             ],
             'yedpay_working_mode' => [
                 'title' => __('Payment Mode', 'yedpay-for-woocommerce'),
@@ -397,7 +403,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             if ($this->yedpay_gateway != '0') {
                 $client->setGatewayCode($this->yedpay_gateway);
             }
-            if ($this->yedpay_gateway == '4_2' && $this->yedpay_gateway_wallet != '0') {
+            if ($this->yedpay_gateway_wallet != '0') {
                 $client->setWallet($this->get_wallet($this->yedpay_gateway_wallet));
             }
             if (is_numeric($this->yedpay_expiry_time) &&
@@ -422,6 +428,10 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 $billing_address['billing_state'] = sanitize_text_field($order->get_billing_state());
             }
             $client->setPaymentData(json_encode($billing_address));
+
+            if ($this->yedpay_checkout_domain_id) {
+                $client->setCheckoutDomainId($this->yedpay_checkout_domain_id);
+            }
 
             $server_output = $client->onlinePayment($custom_id, $order->order_total);
         } catch (Exception $e) {
