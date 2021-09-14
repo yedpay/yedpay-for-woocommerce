@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Yedpay for WooCommerce\n"
-"POT-Creation-Date: 2021-08-23 13:20+0800\n"
-"PO-Revision-Date: 2021-08-23 13:22+0800\n"
+"POT-Creation-Date: 2021-09-14 12:32+0800\n"
+"PO-Revision-Date: 2021-09-14 12:34+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_HK\n"
@@ -57,94 +57,96 @@ msgstr "使用Yedpay商戶一站式收款平台進行交易"
 
 #: WoocommerceYedpay.php:99
 msgid "Yedpay API Key"
-msgstr "Yedpay API Key"
+msgstr "Yedpay API密鑰"
 
 #: WoocommerceYedpay.php:101
-msgid "Your API Key from Yedpay"
-msgstr "你的Yedpay API Key"
+msgid ""
+"Your API Key from Yedpay. Please update the Key according to payment mode."
+msgstr "您的Yedpay API密鑰。請根據付款模式更新API密鑰。"
 
 #: WoocommerceYedpay.php:104
 msgid "Yedpay Sign Key"
-msgstr "Yedpay Sign Key"
+msgstr "Yedpay簽名密鑰"
 
 #: WoocommerceYedpay.php:106
-msgid "Your Sign Key from Yedpay"
-msgstr "你的Yedpay Sign Key"
+msgid ""
+"Your Sign Key from Yedpay. Please update the Key according to payment mode."
+msgstr "您的Yedpay簽名密鑰。請根據付款模式更新簽名密鑰。"
 
 #: WoocommerceYedpay.php:109
+msgid "Yedpay Checkout Domain ID"
+msgstr "Yedpay付款網域ID"
+
+#: WoocommerceYedpay.php:111
+msgid ""
+"Your Checkout Domain ID from Yedpay. Can be empty. Please update the "
+"Checkout Domain ID according to payment mode."
+msgstr "您的Yedpay付款網域ID。可留空。請根據付款模式更新付款網域ID。"
+
+#: WoocommerceYedpay.php:114
 msgid "Gateway"
 msgstr "支付渠道"
 
-#: WoocommerceYedpay.php:112 WoocommerceYedpay.php:125
+#: WoocommerceYedpay.php:117 WoocommerceYedpay.php:130
 msgid "All"
 msgstr "全部"
 
-#: WoocommerceYedpay.php:113
+#: WoocommerceYedpay.php:118
 msgid "Alipay Online Only"
 msgstr "只有Alipay Online"
 
-#: WoocommerceYedpay.php:114
+#: WoocommerceYedpay.php:119
 msgid "WeChat Pay Online Only"
 msgstr "只有WeChat Pay Online"
 
-#: WoocommerceYedpay.php:115
+#: WoocommerceYedpay.php:120
 msgid "UnionPay ExpressPay Only"
 msgstr "只有UnionPay ExpressPay"
 
-#: WoocommerceYedpay.php:116
+#: WoocommerceYedpay.php:121
 msgid "UnionPay UPOP Only"
 msgstr "只有UnionPay UPOP"
 
-#: WoocommerceYedpay.php:117
+#: WoocommerceYedpay.php:122
 msgid "Visa/mastercard Only"
 msgstr "只有Visa/mastercard"
 
-#: WoocommerceYedpay.php:119
+#: WoocommerceYedpay.php:124
 msgid "Support Gateways"
 msgstr "支援的支付渠道"
 
-#: WoocommerceYedpay.php:122
+#: WoocommerceYedpay.php:127
 msgid "Gateway Wallet"
 msgstr "支付渠道錢包"
 
-#: WoocommerceYedpay.php:126
+#: WoocommerceYedpay.php:131
 msgid "Hong Kong Wallet"
 msgstr "香港錢包"
 
-#: WoocommerceYedpay.php:127
+#: WoocommerceYedpay.php:132
 msgid "China Wallet"
 msgstr "內地錢包"
 
-#: WoocommerceYedpay.php:129
+#: WoocommerceYedpay.php:134
 msgid "Support Wallet (Applicable only for Alipay Online)"
 msgstr "支援錢包 (適用於Alipay Online)"
 
-#: WoocommerceYedpay.php:132
+#: WoocommerceYedpay.php:137
 msgid "Expiry Time"
 msgstr "有效期限"
 
-#: WoocommerceYedpay.php:134
+#: WoocommerceYedpay.php:139
 msgid "Online Payment Expiry Time in seconds (900-10800)"
 msgstr "網上交易有效期限 (900-10800秒)"
 
-#: WoocommerceYedpay.php:138
+#: WoocommerceYedpay.php:143
 msgid "Order ID Prefix"
 msgstr "訂單編號前綴"
 
-#: WoocommerceYedpay.php:140
+#: WoocommerceYedpay.php:145
 msgid "Order ID Prefix (Maximum: 10 characters, accept only English letters)"
 msgstr ""
 "Yedpay訂單編號前綴, 如保留原有訂單編號請留空。(最大爲10個字, 只接受英文字母)"
-
-#: WoocommerceYedpay.php:143
-#, fuzzy
-#| msgid "Checkout Domain Key"
-msgid "Checkout Domain ID"
-msgstr "付款網域ID"
-
-#: WoocommerceYedpay.php:145
-msgid "Your Checkout Domain ID from Yedpay"
-msgstr "你的Yedpay付款網域ID"
 
 #: WoocommerceYedpay.php:148
 msgid "Payment Mode"
@@ -221,10 +223,19 @@ msgstr "退款金額必須至少是$0.1。"
 msgid "Order has been already refunded."
 msgstr "訂單已經完成退款。"
 
-#: WoocommerceYedpay.php:705
+#: WoocommerceYedpay.php:716
 msgid "Receive Yedpay refund notification."
 msgstr "接收到Yedpay的退款通知。"
 
-#: WoocommerceYedpay.php:718 WoocommerceYedpay.php:729
+#: WoocommerceYedpay.php:729 WoocommerceYedpay.php:740
 msgid "Refund requested exceeds remaining order balance of "
-msgstr "退款請求的金額已超過訂單的可退款金額$"
+msgstr "退款請求的金額已超過訂單的可退款金額$ "
+
+#~ msgid "Your API Key from Yedpay"
+#~ msgstr "你的Yedpay API Key"
+
+#~ msgid "Your Sign Key from Yedpay"
+#~ msgstr "你的Yedpay Sign Key"
+
+#~ msgid "Your Checkout Domain ID from Yedpay"
+#~ msgstr "你的Yedpay付款網域ID"

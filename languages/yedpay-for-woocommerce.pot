@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yedpay for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://www.yedpay.com/\n"
-"POT-Creation-Date: 2021-08-23 13:20+0800\n"
+"POT-Creation-Date: 2021-09-14 12:30+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,7 +66,7 @@ msgid "Yedpay API Key"
 msgstr ""
 
 #: WoocommerceYedpay.php:101
-msgid "Your API Key from Yedpay"
+msgid "Your API Key from Yedpay. Please update the Key according to payment mode."
 msgstr ""
 
 #: WoocommerceYedpay.php:104
@@ -74,79 +74,81 @@ msgid "Yedpay Sign Key"
 msgstr ""
 
 #: WoocommerceYedpay.php:106
-msgid "Your Sign Key from Yedpay"
+msgid "Your Sign Key from Yedpay. Please update the Key according to payment mode."
 msgstr ""
 
 #: WoocommerceYedpay.php:109
-msgid "Gateway"
+msgid "Yedpay Checkout Domain ID"
 msgstr ""
 
-#: WoocommerceYedpay.php:112 WoocommerceYedpay.php:125
-msgid "All"
-msgstr ""
-
-#: WoocommerceYedpay.php:113
-msgid "Alipay Online Only"
+#: WoocommerceYedpay.php:111
+msgid ""
+"Your Checkout Domain ID from Yedpay. Can be empty. Please update the Checkout "
+"Domain ID according to payment mode."
 msgstr ""
 
 #: WoocommerceYedpay.php:114
-msgid "WeChat Pay Online Only"
+msgid "Gateway"
 msgstr ""
 
-#: WoocommerceYedpay.php:115
-msgid "UnionPay ExpressPay Only"
+#: WoocommerceYedpay.php:117 WoocommerceYedpay.php:130
+msgid "All"
 msgstr ""
 
-#: WoocommerceYedpay.php:116
-msgid "UnionPay UPOP Only"
-msgstr ""
-
-#: WoocommerceYedpay.php:117
-msgid "Visa/mastercard Only"
+#: WoocommerceYedpay.php:118
+msgid "Alipay Online Only"
 msgstr ""
 
 #: WoocommerceYedpay.php:119
-msgid "Support Gateways"
+msgid "WeChat Pay Online Only"
+msgstr ""
+
+#: WoocommerceYedpay.php:120
+msgid "UnionPay ExpressPay Only"
+msgstr ""
+
+#: WoocommerceYedpay.php:121
+msgid "UnionPay UPOP Only"
 msgstr ""
 
 #: WoocommerceYedpay.php:122
-msgid "Gateway Wallet"
+msgid "Visa/mastercard Only"
 msgstr ""
 
-#: WoocommerceYedpay.php:126
-msgid "Hong Kong Wallet"
+#: WoocommerceYedpay.php:124
+msgid "Support Gateways"
 msgstr ""
 
 #: WoocommerceYedpay.php:127
-msgid "China Wallet"
+msgid "Gateway Wallet"
 msgstr ""
 
-#: WoocommerceYedpay.php:129
-msgid "Support Wallet (Applicable only for Alipay Online)"
+#: WoocommerceYedpay.php:131
+msgid "Hong Kong Wallet"
 msgstr ""
 
 #: WoocommerceYedpay.php:132
-msgid "Expiry Time"
+msgid "China Wallet"
 msgstr ""
 
 #: WoocommerceYedpay.php:134
+msgid "Support Wallet (Applicable only for Alipay Online)"
+msgstr ""
+
+#: WoocommerceYedpay.php:137
+msgid "Expiry Time"
+msgstr ""
+
+#: WoocommerceYedpay.php:139
 msgid "Online Payment Expiry Time in seconds (900-10800)"
 msgstr ""
 
-#: WoocommerceYedpay.php:138
+#: WoocommerceYedpay.php:143
 msgid "Order ID Prefix"
 msgstr ""
 
-#: WoocommerceYedpay.php:140
-msgid "Order ID Prefix (Maximum: 10 characters, accept only English letters)"
-msgstr ""
-
-#: WoocommerceYedpay.php:143
-msgid "Checkout Domain ID"
-msgstr ""
-
 #: WoocommerceYedpay.php:145
-msgid "Your Checkout Domain ID from Yedpay"
+msgid "Order ID Prefix (Maximum: 10 characters, accept only English letters)"
 msgstr ""
 
 #: WoocommerceYedpay.php:148
@@ -223,10 +225,10 @@ msgstr ""
 msgid "Order has been already refunded."
 msgstr ""
 
-#: WoocommerceYedpay.php:705
+#: WoocommerceYedpay.php:716
 msgid "Receive Yedpay refund notification."
 msgstr ""
 
-#: WoocommerceYedpay.php:718 WoocommerceYedpay.php:729
+#: WoocommerceYedpay.php:729 WoocommerceYedpay.php:740
 msgid "Refund requested exceeds remaining order balance of "
 msgstr ""

@@ -26,7 +26,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->id = 'yedpay';
         $this->method_title = __('Yedpay', 'yedpay-for-woocommerce');
         $this->method_description = __('Extends WooCommerce to Process Payments with Yedpay.', 'yedpay-for-woocommerce');
-        $this->icon = $this->get_image_path() . 'yedpay_uqaw.svg';
+        $this->icon = $this->get_image_path() . 'yedpay_all.svg';
         $this->has_fields = false;
         $this->supports = ['products', 'refunds'];
 
@@ -98,12 +98,17 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             'yedpay_api_key' => [
                 'title' => __('Yedpay API Key', 'yedpay-for-woocommerce'),
                 'type' => 'text',
-                'description' => __('Your API Key from Yedpay', 'yedpay-for-woocommerce'),
+                'description' => __('Your API Key from Yedpay. Please update the Key according to payment mode.', 'yedpay-for-woocommerce'),
             ],
             'yedpay_sign_key' => [
                 'title' => __('Yedpay Sign Key', 'yedpay-for-woocommerce'),
                 'type' => 'text',
-                'description' => __('Your Sign Key from Yedpay', 'yedpay-for-woocommerce'),
+                'description' => __('Your Sign Key from Yedpay. Please update the Key according to payment mode.', 'yedpay-for-woocommerce'),
+            ],
+            'yedpay_checkout_domain_id' => [
+                'title' => __('Yedpay Checkout Domain ID', 'yedpay-for-woocommerce'),
+                'type' => 'text',
+                'description' => __('Your Checkout Domain ID from Yedpay. Can be empty. Please update the Checkout Domain ID according to payment mode.', 'yedpay-for-woocommerce'),
             ],
             'yedpay_gateway' => [
                 'title' => __('Gateway', 'yedpay-for-woocommerce'),
@@ -138,11 +143,6 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 'title' => __('Order ID Prefix', 'yedpay-for-woocommerce'),
                 'type' => 'text',
                 'description' => __('Order ID Prefix (Maximum: 10 characters, accept only English letters)', 'yedpay-for-woocommerce'),
-            ],
-            'yedpay_checkout_domain_id' => [
-                'title' => __('Checkout Domain ID', 'yedpay-for-woocommerce'),
-                'type' => 'text',
-                'description' => __('Your Checkout Domain ID from Yedpay', 'yedpay-for-woocommerce'),
             ],
             'yedpay_working_mode' => [
                 'title' => __('Payment Mode', 'yedpay-for-woocommerce'),
@@ -667,7 +667,14 @@ class WoocommerceYedpay extends WC_Payment_Gateway
     {
         switch ($this->yedpay_gateway) {
             case '4_2':
-                $icon_path = $this->get_image_path() . 'yedpay_alipay.svg';
+                if ($this->yedpay_gateway_wallet == 'CN') {
+                    $file_name = 'yedpay_alipay_cn.svg';
+                } elseif ($this->yedpay_gateway_wallet == 'HK') {
+                    $file_name = 'yedpay_alipay_hk.svg';
+                } else {
+                    $file_name = 'yedpay_alipay.svg';
+                }
+                $icon_path = $this->get_image_path() . $file_name;
                 break;
 
             case '8_2':
@@ -679,8 +686,12 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 $icon_path = $this->get_image_path() . 'yedpay_unionpay.svg';
                 break;
 
+            case '12_1':
+                $icon_path = $this->get_image_path() . 'yedpay_vm.svg';
+                break;
+
             default:
-                $icon_path = !empty($this->icon) ? $this->icon : $this->get_image_path() . 'yedpay_uqaw.svg';
+                $icon_path = !empty($this->icon) ? $this->icon : $this->get_image_path() . 'yedpay_all.svg';
                 break;
         }
 
