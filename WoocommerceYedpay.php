@@ -26,7 +26,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->id = 'yedpay';
         $this->method_title = __('Yedpay', 'yedpay-for-woocommerce');
         $this->method_description = __('Extends WooCommerce to Process Payments with Yedpay.', 'yedpay-for-woocommerce');
-        $this->icon = $this->get_image_path() . 'yedpay_all.svg';
+        $this->icon = $this->get_image_path() . 'yedpay.svg';
         $this->has_fields = false;
         $this->supports = ['products', 'refunds'];
 
@@ -48,6 +48,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_sign_key = $this->settings['yedpay_sign_key'];
         $this->yedpay_gateway = $this->settings['yedpay_gateway'];
         $this->yedpay_gateway_wallet = $this->settings['yedpay_gateway_wallet'];
+        $this->yedpay_gateway_logo = $this->settings['yedpay_gateway_logo'];
         $this->yedpay_expiry_time = $this->settings['yedpay_expiry_time'];
         $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
         $this->yedpay_checkout_domain_id = $this->settings['yedpay_checkout_domain_id'];
@@ -83,6 +84,27 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 'label' => __('Enable Yedpay Payment Module', 'yedpay-for-woocommerce'),
                 'default' => 'no'
             ],
+            'yedpay_working_mode' => [
+                'title' => __('Payment Mode', 'yedpay-for-woocommerce'),
+                'type' => 'select',
+                'options' => ['live' => __('Live Mode', 'yedpay-for-woocommerce'), 'test' => __('Test/Sandbox Mode', 'yedpay-for-woocommerce')],
+                'description' => __('Live/Test Mode', 'yedpay-for-woocommerce')
+            ],
+            'yedpay_sign_key' => [
+                'title' => __('Yedpay Sign Key', 'yedpay-for-woocommerce'),
+                'type' => 'text',
+                'description' => __('Your Sign Key from Yedpay. Please update the Key according to payment mode.', 'yedpay-for-woocommerce'),
+            ],
+            'yedpay_api_key' => [
+                'title' => __('Yedpay API Key', 'yedpay-for-woocommerce'),
+                'type' => 'text',
+                'description' => __('Your API Key from Yedpay. Please update the Key according to payment mode.', 'yedpay-for-woocommerce'),
+            ],
+            'yedpay_checkout_domain_id' => [
+                'title' => __('Yedpay Checkout Domain ID', 'yedpay-for-woocommerce'),
+                'type' => 'text',
+                'description' => __('Your Checkout Domain ID from Yedpay. Can be empty. Please update the Checkout Domain ID according to payment mode.', 'yedpay-for-woocommerce'),
+            ],
             'yedpay_title' => [
                 'title' => __('Title', 'yedpay-for-woocommerce'),
                 'type' => 'text',
@@ -94,21 +116,6 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 'type' => 'textarea',
                 'description' => __('This controls the description which the user sees during checkout', 'yedpay-for-woocommerce'),
                 'default' => __('Pay securely by Yedpay All-in one Payment Platform', 'yedpay-for-woocommerce')
-            ],
-            'yedpay_api_key' => [
-                'title' => __('Yedpay API Key', 'yedpay-for-woocommerce'),
-                'type' => 'text',
-                'description' => __('Your API Key from Yedpay. Please update the Key according to payment mode.', 'yedpay-for-woocommerce'),
-            ],
-            'yedpay_sign_key' => [
-                'title' => __('Yedpay Sign Key', 'yedpay-for-woocommerce'),
-                'type' => 'text',
-                'description' => __('Your Sign Key from Yedpay. Please update the Key according to payment mode.', 'yedpay-for-woocommerce'),
-            ],
-            'yedpay_checkout_domain_id' => [
-                'title' => __('Yedpay Checkout Domain ID', 'yedpay-for-woocommerce'),
-                'type' => 'text',
-                'description' => __('Your Checkout Domain ID from Yedpay. Can be empty. Please update the Checkout Domain ID according to payment mode.', 'yedpay-for-woocommerce'),
             ],
             'yedpay_gateway' => [
                 'title' => __('Gateway', 'yedpay-for-woocommerce'),
@@ -133,6 +140,22 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 ],
                 'description' => __('Support Wallet (Applicable only for Alipay Online)', 'yedpay-for-woocommerce')
             ],
+            'yedpay_gateway_logo' => [
+                'title' => __('Gateway Logo', 'yedpay-for-woocommerce'),
+                'type' => 'select',
+                'options' => [
+                    '0' => __('Default (Logo change depends on gateway selected)', 'yedpay-for-woocommerce'),
+                    'ALL' => __('All (include Alipay Online, WeChat Pay Online, UnionPay ExpressPay/UPOP, Visa/mastercard)', 'yedpay-for-woocommerce'),
+                    '4' => __('Alipay Online (All Wallet)', 'yedpay-for-woocommerce'),
+                    '4HK' => __('Alipay Online (Hong Kong Wallet)', 'yedpay-for-woocommerce'),
+                    '4CN' => __('Alipay Online (China Wallet)', 'yedpay-for-woocommerce'),
+                    '8' => __('WeChat Pay Online', 'yedpay-for-woocommerce'),
+                    '9' => __('UnionPay (ExpressPay and UPOP)', 'yedpay-for-woocommerce'),
+                    '12VM' => __('Visa/mastercard', 'yedpay-for-woocommerce'),
+                    '4_8_9' => __('Alipay Online, WeChat Pay Online and UnionPay', 'yedpay-for-woocommerce'),
+                ],
+                'description' => __('This controls the logo which the user sees during checkout', 'yedpay-for-woocommerce')
+            ],
             'yedpay_expiry_time' => [
                 'title' => __('Expiry Time', 'yedpay-for-woocommerce'),
                 'type' => 'text',
@@ -143,12 +166,6 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 'title' => __('Order ID Prefix', 'yedpay-for-woocommerce'),
                 'type' => 'text',
                 'description' => __('Order ID Prefix (Maximum: 10 characters, accept only English letters)', 'yedpay-for-woocommerce'),
-            ],
-            'yedpay_working_mode' => [
-                'title' => __('Payment Mode', 'yedpay-for-woocommerce'),
-                'type' => 'select',
-                'options' => ['live' => __('Live Mode', 'yedpay-for-woocommerce'), 'test' => __('Test/Sandbox Mode', 'yedpay-for-woocommerce')],
-                'description' => __('Live/Test Mode', 'yedpay-for-woocommerce')
             ],
         ];
     }
@@ -164,9 +181,11 @@ class WoocommerceYedpay extends WC_Payment_Gateway
     public function validate_yedpay_custom_id_prefix_field($key, $value)
     {
         // check if the Custom id prefix is maximum 10 characters, accept only English letters.
-        if (isset($value) &&
+        if (
+            isset($value) &&
             !empty($value) &&
-            !preg_match('/^[a-zA-Z]{1,10}$/', $value)) {
+            !preg_match('/^[a-zA-Z]{1,10}$/', $value)
+        ) {
             $error_message = "Invalid custom id prefix value: {$value}";
             WC_Admin_Settings::add_error($error_message);
             throw new Exception($error_message);
@@ -185,11 +204,13 @@ class WoocommerceYedpay extends WC_Payment_Gateway
     public function validate_yedpay_expiry_time_field($key, $value)
     {
         // check if the Expiry time is longer than 900 seconds and shorter than 10800 seconds.
-        if (isset($value) &&
+        if (
+            isset($value) &&
             is_numeric($value) &&
             filter_var($value, FILTER_VALIDATE_INT) &&
             $value >= '900' &&
-            $value <= '10800') {
+            $value <= '10800'
+        ) {
             return $value;
         }
         $error_message = "Invalid expiry time value: {$value}";
@@ -403,10 +424,11 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             if ($this->yedpay_gateway != '0') {
                 $client->setGatewayCode($this->yedpay_gateway);
             }
-            if ($this->yedpay_gateway_wallet != '0') {
+            if ($this->yedpay_gateway == '4_2' && $this->yedpay_gateway_wallet != '0') {
                 $client->setWallet($this->get_wallet($this->yedpay_gateway_wallet));
             }
-            if (is_numeric($this->yedpay_expiry_time) &&
+            if (
+                is_numeric($this->yedpay_expiry_time) &&
                 filter_var($this->yedpay_expiry_time, FILTER_VALIDATE_INT) &&
                 $this->yedpay_expiry_time >= '900' &&
                 $this->yedpay_expiry_time <= '10800'
@@ -445,9 +467,9 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             $data = $server_output->getData();
 
             return [
-                    'result' => 'success',
-                    'redirect' => $data->checkout_url,
-                ];
+                'result' => 'success',
+                'redirect' => $data->checkout_url,
+            ];
         } elseif ($server_output instanceof Error) {
             $message = $this->getServerOutputErrorMessage($server_output, 'Precreate');
             $order->add_order_note($message);
@@ -665,6 +687,57 @@ class WoocommerceYedpay extends WC_Payment_Gateway
      */
     public function get_icon()
     {
+        switch ($this->yedpay_gateway_logo) {
+            case 'ALL':
+                $icon_path = $this->get_image_path() . 'yedpay_all.svg';
+                break;
+
+            case '4':
+                $icon_path = $this->get_image_path() . 'yedpay_alipay.svg';
+                break;
+
+            case '4HK':
+                $icon_path = $this->get_image_path() . 'yedpay_alipay_hk.svg';
+                break;
+
+            case '4CN':
+                $icon_path = $this->get_image_path() . 'yedpay_alipay_cn.svg';
+                break;
+
+            case '8':
+                $icon_path = $this->get_image_path() . 'yedpay_wechatpay.svg';
+                break;
+
+            case '9':
+                $icon_path = $this->get_image_path() . 'yedpay_unionpay.svg';
+                break;
+
+            case '12VM':
+                $icon_path = $this->get_image_path() . 'yedpay_vm.svg';
+                break;
+
+            case '4_8_9':
+                $icon_path = $this->get_image_path() . 'yedpay_uqaw.svg';
+                break;
+
+            default:
+                $icon_path = $this->getDefaultLogoPath();
+                break;
+        }
+
+        $icon_width = '120';
+        $icon_html = '<img src="' . $icon_path . '" alt="' . $this->title . '" style="max-width:' . $icon_width . 'px;"/>';
+
+        return apply_filters('woocommerce_gateway_icon', $icon_html, $this->id);
+    }
+
+    /**
+     * function to get default logo path
+     *
+     * @return string
+     */
+    protected function getDefaultLogoPath()
+    {
         switch ($this->yedpay_gateway) {
             case '4_2':
                 if ($this->yedpay_gateway_wallet == 'CN') {
@@ -694,11 +767,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 $icon_path = !empty($this->icon) ? $this->icon : $this->get_image_path() . 'yedpay_all.svg';
                 break;
         }
-
-        $icon_width = '120';
-        $icon_html = '<img src="' . $icon_path . '" alt="' . $this->title . '" style="max-width:' . $icon_width . 'px;"/>';
-
-        return apply_filters('woocommerce_gateway_icon', $icon_html, $this->id);
+        return $icon_path;
     }
 
     /**
@@ -718,11 +787,12 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             update_post_meta($order_id, 'yedpay_receive_refund_notification', 'yes');
 
             $refund = wc_create_refund([
-                    'amount' => $refundedAmount,
-                    'reason' => $refund_reason ?? 'Payment was refunded via Yedpay merchant portal',
-                    'order_id' => $order_id,
-                    'refund_payment' => true
-                ]);
+                'amount' => $refundedAmount,
+                'reason' => !empty($refund_reason) ? $refund_reason : 'Payment was refunded via Yedpay merchant portal',
+                'order_id' => $order_id,
+                'refund_payment' => true
+            ]);
+
             if (is_wp_error($refund)) {
                 if ($refund->get_error_message() == 'Invalid refund amount.') {
                     delete_post_meta($order_id, 'yedpay_receive_refund_notification');
@@ -793,12 +863,12 @@ class WoocommerceYedpay extends WC_Payment_Gateway
     }
 
     /**
-    * function to show error message from server output
-    *
-    * @param Error $server_output
-    * @param string $type
-    * @return string
-    */
+     * function to show error message from server output
+     *
+     * @param Error $server_output
+     * @param string $type
+     * @return string
+     */
     protected function getServerOutputErrorMessage($server_output, $type)
     {
         $message = "Yedpay {$type} failed.";
@@ -818,11 +888,11 @@ class WoocommerceYedpay extends WC_Payment_Gateway
     }
 
     /**
-    * function to get custom order id
-    *
-    * @param string $order_id
-    * @return string
-    */
+     * function to get custom order id
+     *
+     * @param string $order_id
+     * @return string
+     */
     protected function getCustomOrderId($order_id)
     {
         if (!empty($this->yedpay_custom_id_prefix)) {

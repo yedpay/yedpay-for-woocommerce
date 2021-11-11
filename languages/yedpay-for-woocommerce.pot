@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yedpay for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://www.yedpay.com/\n"
-"POT-Creation-Date: 2021-09-14 12:30+0800\n"
+"POT-Creation-Date: 2021-11-02 18:24+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: WoocommerceYedpay.php:27 WoocommerceYedpay.php:90
+#: WoocommerceYedpay.php:27 WoocommerceYedpay.php:112
 msgid "Yedpay"
 msgstr ""
 
@@ -29,36 +29,36 @@ msgstr ""
 msgid "Extends WooCommerce to Process Payments with Yedpay."
 msgstr ""
 
-#: WoocommerceYedpay.php:41 WoocommerceYedpay.php:150
+#: WoocommerceYedpay.php:41 WoocommerceYedpay.php:90
 msgid "Test/Sandbox Mode"
 msgstr ""
 
-#: WoocommerceYedpay.php:81
+#: WoocommerceYedpay.php:82
 msgid "Enable/Disable"
 msgstr ""
 
-#: WoocommerceYedpay.php:83
+#: WoocommerceYedpay.php:84
 msgid "Enable Yedpay Payment Module"
 msgstr ""
 
-#: WoocommerceYedpay.php:87
-msgid "Title"
+#: WoocommerceYedpay.php:88
+msgid "Payment Mode"
 msgstr ""
 
-#: WoocommerceYedpay.php:89
-msgid "This controls the title which the user sees during checkout"
+#: WoocommerceYedpay.php:90
+msgid "Live Mode"
 msgstr ""
 
-#: WoocommerceYedpay.php:93
-msgid "Description"
+#: WoocommerceYedpay.php:91
+msgid "Live/Test Mode"
 msgstr ""
 
-#: WoocommerceYedpay.php:95
-msgid "This controls the description which the user sees during checkout"
+#: WoocommerceYedpay.php:94
+msgid "Yedpay Sign Key"
 msgstr ""
 
 #: WoocommerceYedpay.php:96
-msgid "Pay securely by Yedpay All-in one Payment Platform"
+msgid "Your Sign Key from Yedpay. Please update the Key according to payment mode."
 msgstr ""
 
 #: WoocommerceYedpay.php:99
@@ -70,165 +70,211 @@ msgid "Your API Key from Yedpay. Please update the Key according to payment mode
 msgstr ""
 
 #: WoocommerceYedpay.php:104
-msgid "Yedpay Sign Key"
-msgstr ""
-
-#: WoocommerceYedpay.php:106
-msgid "Your Sign Key from Yedpay. Please update the Key according to payment mode."
-msgstr ""
-
-#: WoocommerceYedpay.php:109
 msgid "Yedpay Checkout Domain ID"
 msgstr ""
 
-#: WoocommerceYedpay.php:111
+#: WoocommerceYedpay.php:106
 msgid ""
 "Your Checkout Domain ID from Yedpay. Can be empty. Please update the Checkout "
 "Domain ID according to payment mode."
 msgstr ""
 
-#: WoocommerceYedpay.php:114
-msgid "Gateway"
+#: WoocommerceYedpay.php:109
+msgid "Title"
 msgstr ""
 
-#: WoocommerceYedpay.php:117 WoocommerceYedpay.php:130
-msgid "All"
+#: WoocommerceYedpay.php:111
+msgid "This controls the title which the user sees during checkout"
+msgstr ""
+
+#: WoocommerceYedpay.php:115
+msgid "Description"
+msgstr ""
+
+#: WoocommerceYedpay.php:117
+msgid "This controls the description which the user sees during checkout"
 msgstr ""
 
 #: WoocommerceYedpay.php:118
-msgid "Alipay Online Only"
-msgstr ""
-
-#: WoocommerceYedpay.php:119
-msgid "WeChat Pay Online Only"
-msgstr ""
-
-#: WoocommerceYedpay.php:120
-msgid "UnionPay ExpressPay Only"
+msgid "Pay securely by Yedpay All-in one Payment Platform"
 msgstr ""
 
 #: WoocommerceYedpay.php:121
-msgid "UnionPay UPOP Only"
+msgid "Gateway"
 msgstr ""
 
-#: WoocommerceYedpay.php:122
-msgid "Visa/mastercard Only"
+#: WoocommerceYedpay.php:124 WoocommerceYedpay.php:137
+msgid "All"
 msgstr ""
 
-#: WoocommerceYedpay.php:124
-msgid "Support Gateways"
+#: WoocommerceYedpay.php:125
+msgid "Alipay Online Only"
+msgstr ""
+
+#: WoocommerceYedpay.php:126
+msgid "WeChat Pay Online Only"
 msgstr ""
 
 #: WoocommerceYedpay.php:127
-msgid "Gateway Wallet"
+msgid "UnionPay ExpressPay Only"
+msgstr ""
+
+#: WoocommerceYedpay.php:128
+msgid "UnionPay UPOP Only"
+msgstr ""
+
+#: WoocommerceYedpay.php:129
+msgid "Visa/mastercard Only"
 msgstr ""
 
 #: WoocommerceYedpay.php:131
-msgid "Hong Kong Wallet"
-msgstr ""
-
-#: WoocommerceYedpay.php:132
-msgid "China Wallet"
+msgid "Support Gateways"
 msgstr ""
 
 #: WoocommerceYedpay.php:134
-msgid "Support Wallet (Applicable only for Alipay Online)"
+msgid "Gateway Wallet"
 msgstr ""
 
-#: WoocommerceYedpay.php:137
-msgid "Expiry Time"
+#: WoocommerceYedpay.php:138
+msgid "Hong Kong Wallet"
 msgstr ""
 
 #: WoocommerceYedpay.php:139
-msgid "Online Payment Expiry Time in seconds (900-10800)"
+msgid "China Wallet"
 msgstr ""
 
-#: WoocommerceYedpay.php:143
-msgid "Order ID Prefix"
+#: WoocommerceYedpay.php:141
+msgid "Support Wallet (Applicable only for Alipay Online)"
 msgstr ""
 
-#: WoocommerceYedpay.php:145
-msgid "Order ID Prefix (Maximum: 10 characters, accept only English letters)"
+#: WoocommerceYedpay.php:144
+msgid "Gateway Logo"
+msgstr ""
+
+#: WoocommerceYedpay.php:147
+msgid "Default (Logo change depends on gateway selected)"
 msgstr ""
 
 #: WoocommerceYedpay.php:148
-msgid "Payment Mode"
+msgid ""
+"All (include Alipay Online, WeChat Pay Online, UnionPay ExpressPay/UPOP, Visa/"
+"mastercard)"
+msgstr ""
+
+#: WoocommerceYedpay.php:149
+msgid "Alipay Online (All Wallet)"
 msgstr ""
 
 #: WoocommerceYedpay.php:150
-msgid "Live Mode"
+msgid "Alipay Online (Hong Kong Wallet)"
 msgstr ""
 
 #: WoocommerceYedpay.php:151
-msgid "Live/Test Mode"
+msgid "Alipay Online (China Wallet)"
 msgstr ""
 
-#: WoocommerceYedpay.php:206
+#: WoocommerceYedpay.php:152
+msgid "WeChat Pay Online"
+msgstr ""
+
+#: WoocommerceYedpay.php:153
+msgid "UnionPay (ExpressPay and UPOP)"
+msgstr ""
+
+#: WoocommerceYedpay.php:154
+msgid "Visa/mastercard"
+msgstr ""
+
+#: WoocommerceYedpay.php:155
+msgid "Alipay Online, WeChat Pay Online and UnionPay"
+msgstr ""
+
+#: WoocommerceYedpay.php:157
+msgid "This controls the logo which the user sees during checkout"
+msgstr ""
+
+#: WoocommerceYedpay.php:160
+msgid "Expiry Time"
+msgstr ""
+
+#: WoocommerceYedpay.php:162
+msgid "Online Payment Expiry Time in seconds (900-10800)"
+msgstr ""
+
+#: WoocommerceYedpay.php:166
+msgid "Order ID Prefix"
+msgstr ""
+
+#: WoocommerceYedpay.php:168
+msgid "Order ID Prefix (Maximum: 10 characters, accept only English letters)"
+msgstr ""
+
+#: WoocommerceYedpay.php:227
 msgid "Yedpay Payment Method Configuration"
 msgstr ""
 
-#: WoocommerceYedpay.php:207
+#: WoocommerceYedpay.php:228
 msgid "Yedpay is All-in one Payment Platform for Merchant"
 msgstr ""
 
-#: WoocommerceYedpay.php:210
+#: WoocommerceYedpay.php:231
 msgid "Module Version"
 msgstr ""
 
-#: WoocommerceYedpay.php:239
+#: WoocommerceYedpay.php:260
 msgid "Yedpay payment notification verify sign failed."
 msgstr ""
 
-#: WoocommerceYedpay.php:244
+#: WoocommerceYedpay.php:265
 msgid "Order ID Not Found."
 msgstr ""
 
-#: WoocommerceYedpay.php:260 WoocommerceYedpay.php:575
+#: WoocommerceYedpay.php:281 WoocommerceYedpay.php:597
 msgid "Order Not Found."
 msgstr ""
 
-#: WoocommerceYedpay.php:285 WoocommerceYedpay.php:345
+#: WoocommerceYedpay.php:306 WoocommerceYedpay.php:366
 msgid "Yedpay payment cancelled."
 msgstr ""
 
-#: WoocommerceYedpay.php:288
+#: WoocommerceYedpay.php:309
 msgid "Yedpay payment failed."
 msgstr ""
 
-#: WoocommerceYedpay.php:290
+#: WoocommerceYedpay.php:311
 msgid "Yedpay payment Error."
 msgstr ""
 
-#: WoocommerceYedpay.php:364
+#: WoocommerceYedpay.php:385
 msgid "Thank you for your order, please click the button below to pay with Yedpay."
 msgstr ""
 
-#: WoocommerceYedpay.php:500
+#: WoocommerceYedpay.php:522
 msgid "Payment has been declined"
 msgstr ""
 
-#: WoocommerceYedpay.php:514
+#: WoocommerceYedpay.php:536
 msgid "Yedpay payment failed. Couldn't connect to gateway server."
 msgstr ""
 
-#: WoocommerceYedpay.php:515
+#: WoocommerceYedpay.php:537
 msgid ""
 "No response from payment gateway server. Try again later or contact the site "
 "administrator."
 msgstr ""
 
-#: WoocommerceYedpay.php:579
+#: WoocommerceYedpay.php:601
 msgid "Refund amount must be at least 0.1."
 msgstr ""
 
-#: WoocommerceYedpay.php:583
+#: WoocommerceYedpay.php:605
 msgid "Order has been already refunded."
 msgstr ""
 
-#: WoocommerceYedpay.php:716
+#: WoocommerceYedpay.php:785
 msgid "Receive Yedpay refund notification."
 msgstr ""
 
-#: WoocommerceYedpay.php:729 WoocommerceYedpay.php:740
+#: WoocommerceYedpay.php:799 WoocommerceYedpay.php:810
 msgid "Refund requested exceeds remaining order balance of "
 msgstr ""
