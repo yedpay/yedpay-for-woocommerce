@@ -606,7 +606,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         }
 
         $is_receive_notification = get_post_meta($order_id, 'yedpay_receive_refund_notification', true);
-        if ($is_receive_notification == 'yes' && $this->isCreditCardGateway($order_id)) {
+        if ($is_receive_notification == 'yes') {
             delete_post_meta($order_id, 'yedpay_receive_refund_notification');
             return true;
         }
