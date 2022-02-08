@@ -438,7 +438,10 @@ class WoocommerceYedpay extends WC_Payment_Gateway
 
             $billing_country = sanitize_text_field($order->get_billing_country());
             $billing_address = [
+                'first_name' => $order->get_billing_first_name(),
+                'last_name'  => $order->get_billing_last_name(),
                 'email' => $order->get_billing_email(),
+                'phone' => $order->get_billing_phone(),
                 'billing_country' => $billing_country,
                 'billing_post_code' => $order->get_billing_postcode(),
                 'billing_city' => $order->get_billing_city(),
