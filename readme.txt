@@ -99,7 +99,6 @@ After installing and activating the plugin, navigate to your WooCommerce Setting
 
 = 1.1.3 =
 * Added: Support customer information autofill in Yedpay online payment page
-* Fixed: Resolve issues in Loading PHP library
 * Updated: WooCommerce and WordPress support version
 
 = 1.1.2 =
