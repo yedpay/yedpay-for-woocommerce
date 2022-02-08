@@ -8,7 +8,7 @@ Easily accept Alipay, AlipayHK, Wechat Pay, UnionPay, Visa and mastercard on you
 
 Hong Kong merchants can easily accept Alipay, Wechat Pay, UnionPay, Visa and mastercard for their websites using Yedpay's payment gateway. Yedpay Gateway support Alipay CN, AlipayHK, WeChat Pay, UnionPay, Visa and mastercard.
 
-Tested with Wordpress 5.8.2 , WooCommerce version 5.9.0
+Tested with Wordpress 5.9 , WooCommerce version 6.1.1
 
 ## Prerequisites
 * [WordPress](https://wordpress.com/)

@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-require_once 'vendor/autoload.php';
+require_once __DIR__ . 'vendor/autoload.php';
 
 use Yedpay\Client;
 use Yedpay\Response\Success;
@@ -53,7 +53,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
         $this->yedpay_checkout_domain_id = $this->settings['yedpay_checkout_domain_id'];
 
-        $this->yedpay_version = '1.1.2';
+        $this->yedpay_version = '1.1.3';
 
         // Saving admin options
         if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
@@ -438,7 +438,10 @@ class WoocommerceYedpay extends WC_Payment_Gateway
 
             $billing_country = sanitize_text_field($order->get_billing_country());
             $billing_address = [
+                'first_name' => $order->get_billing_first_name(),
+                'last_name'  => $order->get_billing_last_name(),
                 'email' => $order->get_billing_email(),
+                'phone' => $order->get_billing_phone(),
                 'billing_country' => $billing_country,
                 'billing_post_code' => $order->get_billing_postcode(),
                 'billing_city' => $order->get_billing_city(),

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0fe53930f14144b96298055234cd9b69",
+    "content-hash": "8fa5841d30d8f140379f3cb1fbad35f3",
     "packages": [
         {
             "name": "yedpay/php-library",
-            "version": "1.3.3",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yedpay/php-library.git",
-                "reference": "d5958b2d9e8451921d7cd60e8e0d4607fc3377ed"
+                "reference": "89542b1633e7664fdac9e82fdf13488bb791dcd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yedpay/php-library/zipball/d5958b2d9e8451921d7cd60e8e0d4607fc3377ed",
-                "reference": "d5958b2d9e8451921d7cd60e8e0d4607fc3377ed",
+                "url": "https://api.github.com/repos/yedpay/php-library/zipball/89542b1633e7664fdac9e82fdf13488bb791dcd7",
+                "reference": "89542b1633e7664fdac9e82fdf13488bb791dcd7",
                 "shasum": ""
             },
             "require": {
@@ -52,10 +52,10 @@
             ],
             "description": "Agnostic Library to use the Yedpay API for Online Payment",
             "support": {
-                "source": "https://github.com/yedpay/php-library/tree/1.3.3",
+                "source": "https://github.com/yedpay/php-library/tree/1.3.4",
                 "issues": "https://github.com/yedpay/php-library/issues"
             },
-            "time": "2021-11-11T07:04:34+00:00"
+            "time": "2022-02-07T07:51:28+00:00"
         }
     ],
     "packages-dev": [],
