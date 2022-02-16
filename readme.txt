@@ -89,7 +89,7 @@ After installing and activating the plugin, navigate to your WooCommerce Setting
 1. Activate Yedpay payment methods by provide "Sign Keys" and "APP Keys"
 2. Check out : select the Yedpay gateway
 3. Choose gateway of Alipay, WeChat Pay, UnionPay, Visa/mastercard
-4. Check the oder detail
+4. Check the order details
 5. A page with the QR code will show out, users can scan the QR code with the Alipay, WeChat or UnionPay App
 6. A page with UnionPay credit card payment will show out, users can enter the card information
 7. Payment successful page
