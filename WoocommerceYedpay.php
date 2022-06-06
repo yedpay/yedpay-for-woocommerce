@@ -437,18 +437,35 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             }
 
             $billing_country = sanitize_text_field($order->get_billing_country());
-            $billing_address = [
-                'first_name' => $order->get_billing_first_name(),
-                'last_name'  => $order->get_billing_last_name(),
-                'email' => $order->get_billing_email(),
-                'phone' => $order->get_billing_phone(),
-                'billing_country' => $billing_country,
-                'billing_post_code' => $order->get_billing_postcode(),
-                'billing_city' => $order->get_billing_city(),
-                'billing_address1' => $order->get_billing_address_1(),
-                'billing_address2' => $order->get_billing_address_2(),
-            ];
-
+            $billing_address = [];
+            if ($order->get_billing_first_name()) {
+                $billing_address['first_name'] = $order->get_billing_first_name();
+            }
+            if ($order->get_billing_last_name()) {
+                $billing_address['last_name'] = $order->get_billing_last_name();
+            }
+            if ($order->get_billing_email()) {
+                $billing_address['email'] = $order->get_billing_email();
+            }
+            if ($order->get_billing_phone()) {
+                $billing_address['phone'] = $order->get_billing_phone();
+            }
+            if ($billing_country) {
+                $billing_address['billing_country'] = $billing_country;
+            }
+            if ($order->get_billing_postcode()) {
+                $billing_address['billing_post_code'] = $order->get_billing_postcode();
+            }
+            if ($order->get_billing_city()) {
+                $billing_address['billing_city'] = $order->get_billing_city();
+            }
+            if ($order->get_billing_address_1()) {
+                $billing_address['billing_address1'] = $order->get_billing_address_1();
+            }
+            if ($order->get_billing_address_2()) {
+                $billing_address['billing_address2'] = $order->get_billing_address_2();
+            }
+            
             if ($billing_country == 'US' || $billing_country == 'CA') {
                 $billing_address['billing_state'] = sanitize_text_field($order->get_billing_state());
             }
