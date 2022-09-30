@@ -246,6 +246,14 @@ class WoocommerceYedpay extends WC_Payment_Gateway
      */
     public function notify_handler()
     {
+        if (
+            !isset($_GET['wc-api'])
+            || $_GET['wc-api'] != 'woocommerceyedpay'
+        )
+        {
+            return;
+        }
+        
         global $woocommerce;
         @ob_clean();
 
