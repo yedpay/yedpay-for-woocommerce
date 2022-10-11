@@ -53,7 +53,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
         $this->yedpay_checkout_domain_id = $this->settings['yedpay_checkout_domain_id'];
 
-        $this->yedpay_version = '1.1.5';
+        $this->yedpay_version = '1.1.6';
 
         // Saving admin options
         if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
