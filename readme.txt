@@ -5,8 +5,8 @@ Plugin URI: https://wordpress.org/plugins/yedpay-for-woocommerce
 Contributors: yedpaykenny
 Tags: Alipay, WeChat Pay, AlipayHK, UnionPay, Visa, mastercard, Payment Gateway, WooCommerce, WooCommerce payment gateway
 Requires at least: 3.0.1
-Tested up to: 6.0.2
-Stable tag: 1.1.6
+Tested up to: 6.3.1
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Easily accept Alipay, AlipayHK, Wechat Pay, UnionPay, Visa and mastercard on you
 
 Hong Kong merchants can easily accept Alipay, Wechat Pay, UnionPay, Visa and mastercard for their websites using Yedpay's payment gateway. Yedpay Gateway support Alipay CN, AlipayHK, WeChat Pay, UnionPay, Visa and mastercard.
 
-Tested with Wordpress 6.0.2 , WooCommerce version 6.9.4
+Tested with Wordpress 6.3.1 , WooCommerce version 8.1.1
 
 = Country Restriction =
 
@@ -96,6 +96,10 @@ After installing and activating the plugin, navigate to your WooCommerce Setting
 8. Order received page
 
 == Changelog ==
+
+= 1.1.7 =
+* Added: Support WooCommerce 8.1 and High-Performance Order Storage (HPOS)
+* Fixed: Resolve issues in non-numeric characters from phone number
 
 = 1.1.6 =
 * Fixed: Resolve issues in partial refund with parameters
