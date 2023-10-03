@@ -455,7 +455,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 $billing_address['email'] = $order->get_billing_email();
             }
             if ($order->get_billing_phone()) {
-                $billing_address['phone'] = $order->get_billing_phone();
+                $billing_address['phone'] = preg_replace("/\D/", "", $order->get_billing_phone());
             }
             if ($billing_country) {
                 $billing_address['billing_country'] = $billing_country;
