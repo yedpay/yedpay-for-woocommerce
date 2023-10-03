@@ -53,7 +53,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
         $this->yedpay_checkout_domain_id = $this->settings['yedpay_checkout_domain_id'];
 
-        $this->yedpay_version = '1.1.6';
+        $this->yedpay_version = '1.1.7';
 
         // Saving admin options
         if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
@@ -292,17 +292,17 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $status = sanitize_text_field($request['transaction']['status']);
         if ($order->get_status() == 'pending' || $order->get_status() == 'failed') {
             // updating extra information in database corresponding to placed order.
-            update_post_meta($order_id, 'yedpay_custom_id', $custom_id);
-            update_post_meta($order_id, 'yedpay_payment_status', $status);
+            $order->update_meta_data('yedpay_custom_id', $custom_id);
+            $order->update_meta_data('yedpay_payment_status', $status);
 
             // Update Order Status
             if ($status == 'paid') {
                 $order->update_status('processing');
 
-                update_post_meta($order_id, 'yedpay_id', sanitize_text_field($request['transaction']['id']));
-                update_post_meta($order_id, 'yedpay_transaction_id', sanitize_text_field($request['transaction']['transaction_id']));
-                update_post_meta($order_id, 'yedpay_payment_method', sanitize_text_field($request['transaction']['payment_method']));
-                update_post_meta($order_id, 'yedpay_payment_gateway_code', sanitize_text_field($request['transaction']['gateway_code']));
+                $order->update_meta_data('yedpay_id', sanitize_text_field($request['transaction']['id']));
+                $order->update_meta_data('yedpay_transaction_id', sanitize_text_field($request['transaction']['transaction_id']));
+                $order->update_meta_data('yedpay_payment_method', sanitize_text_field($request['transaction']['payment_method']));
+                $order->update_meta_data('yedpay_payment_gateway_code', sanitize_text_field($request['transaction']['gateway_code']));
 
                 $order->add_order_note($this->getTransactionInformation($request['transaction']));
                 $order->payment_complete();
@@ -321,6 +321,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             $refund_data = (object) $request['transaction'];
             $this->refundByNotification($order_id, $refund_data);
         }
+        $order->save();
         die('success');
     }
 
@@ -351,17 +352,19 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             // $order_key = sanitize_text_field($request['key']);
 
             // updating extra information in database corresponding to placed order.
-            update_post_meta($order_id, 'yedpay_custom_id', sanitize_text_field($request['custom_id']));
-            update_post_meta($order_id, 'yedpay_payment_status', $status);
+            $order->update_meta_data('yedpay_custom_id', sanitize_text_field($request['custom_id']));
+            $order->update_meta_data('yedpay_payment_status', $status);
+            $order->save();
 
             // Update Order Status
             if ($status == 'paid') {
                 $order->update_status('processing');
 
-                update_post_meta($order_id, 'yedpay_id', sanitize_text_field($request['id']));
-                update_post_meta($order_id, 'yedpay_transaction_id', sanitize_text_field($request['transaction_id']));
-                update_post_meta($order_id, 'yedpay_payment_method', sanitize_text_field($request['payment_method']));
-                update_post_meta($order_id, 'yedpay_payment_gateway_code', sanitize_text_field($request['gateway_code']));
+                $order->update_meta_data('yedpay_id', sanitize_text_field($request['id']));
+                $order->update_meta_data('yedpay_transaction_id', sanitize_text_field($request['transaction_id']));
+                $order->update_meta_data('yedpay_payment_method', sanitize_text_field($request['payment_method']));
+                $order->update_meta_data('yedpay_payment_gateway_code', sanitize_text_field($request['gateway_code']));
+                $order->save();
 
                 $order->add_order_note($this->getTransactionInformation($request));
                 $order->payment_complete();
@@ -632,13 +635,14 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             return new WP_Error('wc-order', __('Order has been already refunded.', 'yedpay-for-woocommerce'));
         }
 
-        $is_receive_notification = get_post_meta($order_id, 'yedpay_receive_refund_notification', true);
+        $is_receive_notification = $order->get_meta('yedpay_receive_refund_notification');
         if ($is_receive_notification == 'yes') {
-            delete_post_meta($order_id, 'yedpay_receive_refund_notification');
+            $order->delete_meta_data('yedpay_receive_refund_notification');
+            $order->save();
             return true;
         }
 
-        $custom_id = get_post_meta($order_id, 'yedpay_custom_id', true);
+        $custom_id = $order->get_meta('yedpay_custom_id');
         if (empty($custom_id)) {
             $custom_id = $this->getCustomOrderId($order_id);
         }
@@ -661,7 +665,8 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 $order->add_order_note($this->getRefundInformation($refund_data));
                 return true;
             } elseif (isset($refund_data->status) && $refund_data->status == 'pending_refund' && $this->isCreditCardGateway($order_id)) {
-                update_post_meta($order_id, 'yedpay_refund_reason', sanitize_text_field($reason));
+                $order->update_meta_data('yedpay_refund_reason', sanitize_text_field($reason));
+                $order->save();
                 $message = 'Yedpay Refund processing. Please wait Yedpay refund notification or check the transaction latest status via Yedpay merchant portal.';
                 $order->add_order_note(__($message, 'yedpay-for-woocommerce'));
                 return new WP_Error('Error', $message);
@@ -810,8 +815,9 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $refundedAmount = $refund_data->refunded;
         if ($order->get_remaining_refund_amount() >= $refundedAmount) {
             $order->add_order_note(__('Receive Yedpay refund notification.', 'yedpay-for-woocommerce'));
-            $refund_reason = get_post_meta($order_id, 'yedpay_refund_reason', true);
-            update_post_meta($order_id, 'yedpay_receive_refund_notification', 'yes');
+            $refund_reason = $order->get_meta('yedpay_refund_reason');
+            $order->update_meta_data('yedpay_receive_refund_notification', 'yes');
+            $order->save();
 
             $refund = wc_create_refund([
                 'amount' => $refundedAmount,
@@ -822,15 +828,16 @@ class WoocommerceYedpay extends WC_Payment_Gateway
 
             if (is_wp_error($refund)) {
                 if ($refund->get_error_message() == 'Invalid refund amount.') {
-                    delete_post_meta($order_id, 'yedpay_receive_refund_notification');
+                    $order->delete_meta_data('yedpay_receive_refund_notification');
                     $this->error_response(__('Refund requested exceeds remaining order balance of ', 'yedpay-for-woocommerce') . $order->get_formatted_order_total());
                 } else {
-                    delete_post_meta($order_id, 'yedpay_receive_refund_notification');
+                    $order->delete_meta_data('yedpay_receive_refund_notification');
                     $this->error_response($refund->get_error_message());
                 }
             }
+            $order->save();
 
-            $gateway_sub_name = get_post_meta($order_id, 'yedpay_payment_method', true);
+            $gateway_sub_name = $order->get_meta('yedpay_payment_method');
             $refund_data->gateway_sub_name = $gateway_sub_name;
             $order->add_order_note($this->getRefundInformation($refund_data));
         } else {
@@ -885,7 +892,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
      */
     protected function isCreditCardGateway($order_id)
     {
-        $gateway_code = get_post_meta($order_id, 'yedpay_payment_gateway_code', true);
+        $gateway_code = $order->get_meta('yedpay_payment_gateway_code');
         return ($gateway_code == '12_1' || $gateway_code == '12_2');
     }
 
