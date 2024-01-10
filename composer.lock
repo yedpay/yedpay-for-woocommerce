@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f1c861de001d2121c28fc4102757893",
+    "content-hash": "200abe51889ef9f9729e7a6115705e35",
     "packages": [
         {
             "name": "yedpay/php-library",
