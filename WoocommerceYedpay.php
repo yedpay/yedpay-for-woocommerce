@@ -53,7 +53,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
         $this->yedpay_checkout_domain_id = $this->settings['yedpay_checkout_domain_id'];
 
-        $this->yedpay_version = '1.1.9';
+        $this->yedpay_version = '1.2.0';
 
         // Saving admin options
         if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
@@ -262,11 +262,12 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $logger = wc_get_logger();
 
         // remove double slashes in string
-        $request = stripslashes_deep($_POST);
+        $request = stripslashes_deep(sanitize_post($_POST));
+        $unset_fields = ['ID', 'filter']; // sanitize post will add two parameters `ID` and `filter`
 
         // verify sign
         $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
-        if (!$client->verifySign($request, $this->yedpay_sign_key)) {
+        if (!$client->verifySign($request, $this->yedpay_sign_key, $unset_fields)) {
             $this->error_response(__('Yedpay payment notification verify sign failed.', 'yedpay-for-woocommerce'));
         }
 
@@ -342,10 +343,12 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             $query_str = parse_url($checkoutUrl, PHP_URL_QUERY);
             parse_str($query_str, $query_params);
 
-            $request = $_GET;
+            $request = sanitize_post($_GET);
+            $unset_fields = array_keys($query_params);
+            $unset_fields[] = 'filter'; // sanitize post, filter = 'display'
 
             $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
-            if (!$client->verifySign($request, $this->yedpay_sign_key, array_keys($query_params))) {
+            if (!$client->verifySign($request, $this->yedpay_sign_key, $unset_fields)) {
                 $orderNote = 'Yedpay payment verify sign failed.';
                 $order->add_order_note($orderNote);
                 return;

@@ -10,4 +10,4 @@ fi
 
 composer update
 
-zip -r $ZIP_FILE images languages vendor index.php LICENSE readme.txt WoocommerceYedpay.php
+zip -r $ZIP_FILE images languages vendor yedpay-for-woocommerce.php LICENSE readme.txt WoocommerceYedpay.php
