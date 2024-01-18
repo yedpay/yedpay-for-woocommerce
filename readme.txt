@@ -6,7 +6,7 @@ Contributors: yedpaykenny
 Tags: Alipay, WeChat Pay, AlipayHK, UnionPay, Visa, mastercard, Payment Gateway, WooCommerce, WooCommerce payment gateway
 Requires at least: 3.0.1
 Tested up to: 6.4.2
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,9 @@ After installing and activating the plugin, navigate to your WooCommerce Setting
 8. Order received page
 
 == Changelog ==
+
+= 1.2.1 =
+* Fixed: change back plugin main file name and data sanitization
 
 = 1.2.0 =
 * Fixed: Plugin main file name and data sanitization
