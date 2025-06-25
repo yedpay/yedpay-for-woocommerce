@@ -346,6 +346,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             $request = sanitize_post($_GET);
             $unset_fields = array_keys($query_params);
             $unset_fields[] = 'filter'; // sanitize post, filter = 'display'
+            $unset_fields[] = 'utm_nooverride';
 
             $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
             if (!$client->verifySign($request, $this->yedpay_sign_key, $unset_fields)) {
