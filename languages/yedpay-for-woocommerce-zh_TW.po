@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Yedpay for WooCommerce\n"
-"POT-Creation-Date: 2024-01-16 15:03+0800\n"
-"PO-Revision-Date: 2024-01-16 15:03+0800\n"
+"POT-Creation-Date: 2025-06-25 15:48+0800\n"
+"PO-Revision-Date: 2025-06-25 15:48+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_TW\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -228,11 +228,11 @@ msgstr "Yedpay交易通知簽名驗證失敗。"
 msgid "Order ID Not Found."
 msgstr "訂單編號不存在。"
 
-#: WoocommerceYedpay.php:292 WoocommerceYedpay.php:635
+#: WoocommerceYedpay.php:292 WoocommerceYedpay.php:637
 msgid "Order Not Found."
 msgstr "訂單不存在。"
 
-#: WoocommerceYedpay.php:317 WoocommerceYedpay.php:382
+#: WoocommerceYedpay.php:317 WoocommerceYedpay.php:384
 msgid "Yedpay payment cancelled."
 msgstr "Yedpay交易取消。"
 
@@ -244,37 +244,37 @@ msgstr "Yedpay交易失敗。"
 msgid "Yedpay payment Error."
 msgstr "Yedpay交易錯誤。"
 
-#: WoocommerceYedpay.php:402
+#: WoocommerceYedpay.php:404
 msgid ""
 "Thank you for your order, please click the button below to pay with Yedpay."
 msgstr "多謝你的訂單，請按以下按鈕確認使用Yedpay交易。"
 
-#: WoocommerceYedpay.php:560
+#: WoocommerceYedpay.php:562
 msgid "Payment has been declined"
 msgstr "交易已被拒絕"
 
-#: WoocommerceYedpay.php:574
+#: WoocommerceYedpay.php:576
 msgid "Yedpay payment failed. Couldn't connect to gateway server."
 msgstr "Yedpay交易失敗。未能連接交易渠道伺服器。"
 
-#: WoocommerceYedpay.php:575
+#: WoocommerceYedpay.php:577
 msgid ""
 "No response from payment gateway server. Try again later or contact the site "
 "administrator."
 msgstr "交易渠道未有回應。請稍候再試或聯絡商戶。"
 
-#: WoocommerceYedpay.php:639
+#: WoocommerceYedpay.php:641
 msgid "Refund amount must be at least 0.1."
 msgstr "退款金額必須至少是$0.1。"
 
-#: WoocommerceYedpay.php:643
+#: WoocommerceYedpay.php:645
 msgid "Order has been already refunded."
 msgstr "訂單已經完成退款。"
 
-#: WoocommerceYedpay.php:825
+#: WoocommerceYedpay.php:827
 msgid "Receive Yedpay refund notification."
 msgstr "接收到Yedpay的退款通知。"
 
-#: WoocommerceYedpay.php:840 WoocommerceYedpay.php:852
+#: WoocommerceYedpay.php:842 WoocommerceYedpay.php:854
 msgid "Refund requested exceeds remaining order balance of "
 msgstr "退款請求的金額已超過訂單的可退款金額$ "

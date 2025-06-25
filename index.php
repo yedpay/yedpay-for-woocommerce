@@ -4,7 +4,7 @@
  * Plugin Name: Yedpay for WooCommerce
  * Plugin URI: https://wordpress.org/plugins/yedpay-for-woocommerce
  * Description: Easily accept Alipay, AlipayHK, Wechat Pay, UnionPay, Visa and mastercard on your Wordpress site using Yedpay WooCommerce payment gateway in one plugin for free.
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: Yedpay
  * Author URI: https://www.yedpay.com/
  * License: GPLv2 or later
@@ -12,7 +12,7 @@
  * Text Domain: yedpay-for-woocommerce
  * Domain Path: /languages
  * WC requires at least: 3.0.0
- * WC tested up to: 8.5.1
+ * WC tested up to: 9.8.5
  */
 
 if (!defined('ABSPATH')) {

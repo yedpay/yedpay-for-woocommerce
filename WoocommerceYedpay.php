@@ -53,7 +53,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
         $this->yedpay_checkout_domain_id = $this->settings['yedpay_checkout_domain_id'];
 
-        $this->yedpay_version = '1.2.1';
+        $this->yedpay_version = '1.2.2';
 
         // Saving admin options
         if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
@@ -346,6 +346,8 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             $request = sanitize_post($_GET);
             $unset_fields = array_keys($query_params);
             $unset_fields[] = 'filter'; // sanitize post, filter = 'display'
+            $unset_fields[] = 'utm_nooverride';
+            $unset_fields[] = 'ID';
 
             $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
             if (!$client->verifySign($request, $this->yedpay_sign_key, $unset_fields)) {

@@ -8,7 +8,7 @@ Easily accept Alipay, AlipayHK, Wechat Pay, UnionPay, Visa and mastercard on you
 
 Hong Kong merchants can easily accept Alipay, Wechat Pay, UnionPay, Visa and mastercard for their websites using Yedpay's payment gateway. Yedpay Gateway support Alipay CN, AlipayHK, WeChat Pay, UnionPay, Visa and mastercard.
 
-Tested with Wordpress 6.4.2 , WooCommerce version 8.5.1
+Tested with Wordpress 6.6.2 , WooCommerce version 9.8.5
 
 ## Prerequisites
 * [WordPress](https://wordpress.com/)
@@ -58,7 +58,7 @@ In order to start using the plugin, you need to get Your API Key from Yedpay.
 6. Under "Payment Gateways" you will find all the available gateways, select "Yedpay" option.
 7. you will be asked to enter Sign Key, APP ID and Payment mode.
 8. To get the Sign Key and APP ID, please go to [Yedpay merchant Portal](https://merchant.yedpay.com) to register a merchant account
-9. You can also call our customer service to open a merchant account: +852 5977 0850 or email [cs@yedpay.com](mailto:cs@yedpay.com)
+9. You can also call our customer service to open a merchant account: +852 6046 9299 or email [cs@yedpay.com.hk](mailto:cs@yedpay.com.hk)
 
 ## Frequently Asked Questions
 
@@ -75,7 +75,7 @@ In order to start using the plugin, you need to get Your API Key from Yedpay.
 * You can do it on the [Yedpay merchant Portal](https://merchant.yedpay.com)
 
 ### Is there a number I can reach if I have any question?
-* Our customer service number is +852 3690 8216, Whatapps +852 5977 0850 and email : [cs@yedpay.com](mailto:cs@yedpay.com)
+* Our customer service number is +852 3905 2568, Whatapps +852 6046 9299 and email : [cs@yedpay.com.hk](mailto:cs@yedpay.com.hk)
 
 ### When will I receive the money in my bank?
 * You will receive the payment in 2 days after the purchase was done.
