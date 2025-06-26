@@ -99,6 +99,7 @@ After installing and activating the plugin, navigate to your WooCommerce Setting
 
 = 1.2.2 =
 * Fixed: Resolve issues in return url sign verification
+* Fixed: Resolve incorrectly `order_total` called issue
 
 = 1.2.1 =
 * Fixed: change back plugin main file name and data sanitization
