@@ -495,7 +495,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 $client->setCheckoutDomainId($this->yedpay_checkout_domain_id);
             }
 
-            $server_output = $client->onlinePayment($custom_id, $order->order_total);
+            $server_output = $client->onlinePayment($custom_id, $order->get_total());
         } catch (Exception $e) {
             // No response or unexpected response
             $order->add_order_note('Yedpay Precreate failed. Error Message: ' . esc_html($e->getMessage()));
