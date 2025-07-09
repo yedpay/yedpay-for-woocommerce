@@ -902,8 +902,9 @@ class WoocommerceYedpay extends WC_Payment_Gateway
      */
     protected function isCreditCardGateway($order_id)
     {
+        $order = new WC_Order($order_id);
         $gateway_code = $order->get_meta('yedpay_payment_gateway_code');
-        return ($gateway_code == '12_1' || $gateway_code == '12_2');
+        return ($gateway_code == '12_1' || $gateway_code == '12_2' || $gateway_code == '12_3' || $gateway_code == '12_4');
     }
 
     /**
