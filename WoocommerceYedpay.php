@@ -344,13 +344,17 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             parse_str($query_str, $query_params);
 
             $request = sanitize_post($_GET);
-            $unset_fields = array_keys($query_params);
-            $unset_fields[] = 'filter'; // sanitize post, filter = 'display'
-            $unset_fields[] = 'utm_nooverride';
-            $unset_fields[] = 'ID';
+
+            $filteredRequest = $this->getCheckoutUrlFilteredRequestForVerifySign($request);
+
+            if ($filteredRequest === false) {
+                $orderNote = 'Yedpay payment verify sign request format invalid.';
+                $order->add_order_note($orderNote);
+                return;
+            }
 
             $client = new Client($this->operation_mode(), $this->yedpay_api_key, false);
-            if (!$client->verifySign($request, $this->yedpay_sign_key, $unset_fields)) {
+            if (!$client->verifySign($filteredRequest, $this->yedpay_sign_key)) {
                 $orderNote = 'Yedpay payment verify sign failed.';
                 $order->add_order_note($orderNote);
                 return;
@@ -944,5 +948,51 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             return $this->yedpay_custom_id_prefix . '-' . $order_id;
         }
         return $order_id;
+    }
+
+    /**
+     * Filter the request for verify sign.
+     *
+     * @param mixed $request
+     * @return array|bool Return the filtered request for verify sign if valid, otherwise return false.
+     */
+    protected function getCheckoutUrlFilteredRequestForVerifySign($request)
+    {
+        // Validate if the input is an array
+        if (!is_array($request)) {
+            return false;
+        }
+
+        // Three Cases:
+        // case 1: If field 'transaction_id' is present, start with 'id',end with 'sign'
+        // case 2: If field 'authorization_id' is present, start with 'id', end with 'sign'
+        // case 3: General case,start with 'status', end with 'sign'
+        $startField = (isset($request['transaction_id']) || isset($request['authorization_id'])) ? 'id' : 'status';
+        $endField = 'sign';
+
+        // return the filtered request
+        return $this->filterArrayBetweenFields($request, $startField, $endField);
+    }
+
+    /**
+     * Filters an array to include fields between two specified keys (inclusive).
+     *
+     * @param array $request The input array to filter.
+     * @param string $startField The starting key.
+     * @param string $endField The ending key.
+     * @return array|bool Return the filtered array if both keys are found and in order, otherwise return false.
+     */
+    protected function filterArrayBetweenFields(array $request, string $startField, string $endField)
+    {
+        $keys = array_keys($request);
+        $startIndex = array_search($startField, $keys);
+        $endIndex = array_search($endField, $keys);
+
+        if ($startIndex !== false && $endIndex !== false && $startIndex <= $endIndex) {
+            $filteredKeys = array_slice($keys, $startIndex, $endIndex - $startIndex + 1);
+            return array_intersect_key($request, array_flip($filteredKeys));
+        }
+
+        return false;
     }
 }
