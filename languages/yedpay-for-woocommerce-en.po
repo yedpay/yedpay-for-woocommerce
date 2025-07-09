@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Yedpay for WooCommerce\n"
-"POT-Creation-Date: 2025-06-25 15:47+0800\n"
-"PO-Revision-Date: 2025-06-25 15:47+0800\n"
+"POT-Creation-Date: 2025-07-09 11:43+0800\n"
+"PO-Revision-Date: 2025-07-09 11:43+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -231,11 +231,11 @@ msgstr "Yedpay payment notification verify sign failed."
 msgid "Order ID Not Found."
 msgstr "Order ID Not Found."
 
-#: WoocommerceYedpay.php:292 WoocommerceYedpay.php:637
+#: WoocommerceYedpay.php:292 WoocommerceYedpay.php:641
 msgid "Order Not Found."
 msgstr "Order Not Found."
 
-#: WoocommerceYedpay.php:317 WoocommerceYedpay.php:384
+#: WoocommerceYedpay.php:317 WoocommerceYedpay.php:388
 msgid "Yedpay payment cancelled."
 msgstr "Yedpay payment cancelled."
 
@@ -247,21 +247,21 @@ msgstr "Yedpay payment failed."
 msgid "Yedpay payment Error."
 msgstr "Yedpay payment Error."
 
-#: WoocommerceYedpay.php:404
+#: WoocommerceYedpay.php:408
 msgid ""
 "Thank you for your order, please click the button below to pay with Yedpay."
 msgstr ""
 "Thank you for your order, please click the button below to pay with Yedpay."
 
-#: WoocommerceYedpay.php:562
+#: WoocommerceYedpay.php:566
 msgid "Payment has been declined"
 msgstr "Payment has been declined"
 
-#: WoocommerceYedpay.php:576
+#: WoocommerceYedpay.php:580
 msgid "Yedpay payment failed. Couldn't connect to gateway server."
 msgstr "Yedpay payment failed. Couldn't connect to gateway server."
 
-#: WoocommerceYedpay.php:577
+#: WoocommerceYedpay.php:581
 msgid ""
 "No response from payment gateway server. Try again later or contact the site "
 "administrator."
@@ -269,18 +269,18 @@ msgstr ""
 "No response from payment gateway server. Try again later or contact the site "
 "administrator."
 
-#: WoocommerceYedpay.php:641
+#: WoocommerceYedpay.php:645
 msgid "Refund amount must be at least 0.1."
 msgstr "Refund amount must be at least 0.1."
 
-#: WoocommerceYedpay.php:645
+#: WoocommerceYedpay.php:649
 msgid "Order has been already refunded."
 msgstr "Order has been already refunded."
 
-#: WoocommerceYedpay.php:827
+#: WoocommerceYedpay.php:831
 msgid "Receive Yedpay refund notification."
 msgstr "Receive Yedpay refund notification."
 
-#: WoocommerceYedpay.php:842 WoocommerceYedpay.php:854
+#: WoocommerceYedpay.php:846 WoocommerceYedpay.php:858
 msgid "Refund requested exceeds remaining order balance of "
 msgstr "Refund requested exceeds remaining order balance of "
