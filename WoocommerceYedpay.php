@@ -675,7 +675,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         if ($server_output instanceof Success) {
             $refund_data = $server_output->getData();
 
-            if (isset($refund_data->status) && $refund_data->status == 'refunded') {
+            if (isset($refund_data->status) && ($refund_data->status == 'refunded' || $refund_data->status == 'void')) {
                 $order->add_order_note($this->getRefundInformation($refund_data));
                 return true;
             } elseif (isset($refund_data->status) && $refund_data->status == 'pending_refund' && $this->isCreditCardGateway($order_id)) {
