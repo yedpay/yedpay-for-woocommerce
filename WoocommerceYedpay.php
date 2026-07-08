@@ -53,7 +53,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         $this->yedpay_custom_id_prefix = $this->settings['yedpay_custom_id_prefix'];
         $this->yedpay_checkout_domain_id = $this->settings['yedpay_checkout_domain_id'];
 
-        $this->yedpay_version = '1.2.4';
+        $this->yedpay_version = '1.2.5';
 
         // Saving admin options
         if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
@@ -675,10 +675,14 @@ class WoocommerceYedpay extends WC_Payment_Gateway
         if ($server_output instanceof Success) {
             $refund_data = $server_output->getData();
 
-            if (isset($refund_data->status) && ($refund_data->status == 'refunded' || $refund_data->status == 'void')) {
+            if (isset($refund_data->status) && in_array($refund_data->status, ['refunded', 'void'])) {
                 $order->add_order_note($this->getRefundInformation($refund_data));
                 return true;
-            } elseif (isset($refund_data->status) && $refund_data->status == 'pending_refund' && $this->isCreditCardGateway($order_id)) {
+            } elseif (
+                isset($refund_data->status) &&
+                $refund_data->status == 'pending_refund' &&
+                $this->isPendingRefundGateway($order_id)
+            ) {
                 $order->update_meta_data('yedpay_refund_reason', sanitize_text_field($reason));
                 $order->save();
                 $message = 'Yedpay Refund processing. Please wait Yedpay refund notification or check the transaction latest status via Yedpay merchant portal.';
@@ -899,16 +903,19 @@ class WoocommerceYedpay extends WC_Payment_Gateway
     }
 
     /**
-     * function to return gateway code is credit card online or not
+     * function to determine whether the gateway initial refund status is pending refund or not
      *
-     * @param array $refund_data
+     * @param int $order_id
      * @return bool
      */
-    protected function isCreditCardGateway($order_id)
+    protected function isPendingRefundGateway($order_id)
     {
         $order = new WC_Order($order_id);
         $gateway_code = $order->get_meta('yedpay_payment_gateway_code');
-        return ($gateway_code == '12_1' || $gateway_code == '12_2' || $gateway_code == '12_3' || $gateway_code == '12_4');
+        return in_array(
+            $gateway_code,
+            ['12_1', '12_2', '12_3', '12_4', '16_4', '16_5']
+        );
     }
 
     /**
