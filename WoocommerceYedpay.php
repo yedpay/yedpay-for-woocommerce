@@ -678,11 +678,7 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             if (isset($refund_data->status) && in_array($refund_data->status, ['refunded', 'void'])) {
                 $order->add_order_note($this->getRefundInformation($refund_data));
                 return true;
-            } elseif (
-                isset($refund_data->status) &&
-                $refund_data->status == 'pending_refund' &&
-                $this->isPendingRefundGateway($order_id)
-            ) {
+            } elseif (isset($refund_data->status) && $refund_data->status == 'pending_refund') {
                 $order->update_meta_data('yedpay_refund_reason', sanitize_text_field($reason));
                 $order->save();
                 $message = 'Yedpay Refund processing. Please wait Yedpay refund notification or check the transaction latest status via Yedpay merchant portal.';
@@ -693,7 +689,8 @@ class WoocommerceYedpay extends WC_Payment_Gateway
             $message = $this->getServerOutputErrorMessage($server_output, 'Refund');
             $order->add_order_note($message);
             $logger->error($message);
-            return new WP_Error('Error', $message);
+
+            return new WP_Error('Error', str_replace('<br>', "\n", $message));
         }
 
         $message = 'Yedpay Refund failed, please contact Yedpay.';
@@ -900,22 +897,6 @@ class WoocommerceYedpay extends WC_Payment_Gateway
                 Refunded Amount: ' . sanitize_text_field($refund_data->refunded) . '<br>
                 Currency: ' . sanitize_text_field($refund_data->currency) . '<br>
                 Refund Time: ' . sanitize_text_field($refund_data->refunded_at);
-    }
-
-    /**
-     * function to determine whether the gateway initial refund status is pending refund or not
-     *
-     * @param int $order_id
-     * @return bool
-     */
-    protected function isPendingRefundGateway($order_id)
-    {
-        $order = new WC_Order($order_id);
-        $gateway_code = $order->get_meta('yedpay_payment_gateway_code');
-        return in_array(
-            $gateway_code,
-            ['12_1', '12_2', '12_3', '12_4', '16_4', '16_5']
-        );
     }
 
     /**
