@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Yedpay for WooCommerce\n"
-"POT-Creation-Date: 2025-07-09 11:43+0800\n"
-"PO-Revision-Date: 2025-07-09 11:43+0800\n"
+"POT-Creation-Date: 2026-07-17 15:45+0800\n"
+"PO-Revision-Date: 2026-07-17 15:46+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_HK\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -271,10 +271,10 @@ msgstr "退款金額必須至少是$0.1。"
 msgid "Order has been already refunded."
 msgstr "訂單已經完成退款。"
 
-#: WoocommerceYedpay.php:831
+#: WoocommerceYedpay.php:832
 msgid "Receive Yedpay refund notification."
 msgstr "接收到Yedpay的退款通知。"
 
-#: WoocommerceYedpay.php:846 WoocommerceYedpay.php:858
+#: WoocommerceYedpay.php:847 WoocommerceYedpay.php:859
 msgid "Refund requested exceeds remaining order balance of "
 msgstr "退款請求的金額已超過訂單的可退款金額$ "
